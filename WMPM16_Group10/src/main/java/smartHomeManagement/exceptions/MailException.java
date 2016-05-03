@@ -1,4 +1,4 @@
-package smartMeterManagement.exceptions;
+package smartHomeManagement.exceptions;
 
 public class MailException extends Exception{
 

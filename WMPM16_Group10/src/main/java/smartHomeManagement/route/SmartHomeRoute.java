@@ -1,4 +1,4 @@
-package smartMeterManagement.route;
+package smartHomeManagement.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;

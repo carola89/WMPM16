@@ -1,4 +1,4 @@
-package smartMeterManagement;
+package smartHomeManagement;
 
 
 import org.springframework.boot.SpringApplication;
