@@ -17,7 +17,7 @@ public class WireTapLogMail implements Processor {
         String receiver = (String) exchange.getIn().getHeader("To");
         String subject = (String) exchange.getIn().getHeader("Subject");
         String content = exchange.getIn().getBody(String.class);
-        String date = new SimpleDateFormat().format(Calendar.getInstance().getTime());
+        String date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 
         StringBuilder contentText = new StringBuilder();
         contentText.append("Logging Email exchange on: " + date + "\n");

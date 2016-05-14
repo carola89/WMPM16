@@ -1,9 +1,6 @@
 package smartHomeManagement.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,10 @@ public class Operator {
     private String name;
     private String address;
     private String email;
+    @ManyToMany(mappedBy = "operators")
     private List<Customer> customers;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "operator_smartMeter", joinColumns = @JoinColumn(name = "operator_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "smartMeter_id", referencedColumnName = "id"))
     private List<SmartMeter> smartMeters;
 
 

@@ -1,9 +1,6 @@
 package smartHomeManagement.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -17,7 +14,10 @@ public class SmartMeter {
     private long id;
     private int SmartMeterNr;
     private String location;
+    @OneToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+    @ManyToMany(mappedBy = "smartMeters")
     private List<Operator> operators;
 
     protected SmartMeter() {
