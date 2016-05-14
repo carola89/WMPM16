@@ -1,12 +1,20 @@
 package smartHomeManagement.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Martina on 12.05.2016.
  */
+@Entity
 public class Operator {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private int operatorNr;
     private String name;
@@ -17,6 +25,15 @@ public class Operator {
 
 
     protected Operator() {
+    }
+
+    public Operator(int operatorNr, String name, String address, String email, List<Customer> customers, List<SmartMeter> smartMeters) {
+        this.operatorNr = operatorNr;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.customers = customers;
+        this.smartMeters = smartMeters;
     }
 
     public long getId() {
@@ -43,20 +60,42 @@ public class Operator {
         this.name = name;
     }
 
-    public String getAddresse() {
-        return address;
-    }
-
-    public void setAddresse(String addresse) {
-        this.address = addresse;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Customer> getCustomers() {
+        if (this.customers == null) {
+            this.customers = new ArrayList<>();
+        }
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public List<SmartMeter> getSmartMeters() {
+        if (this.smartMeters == null) {
+            this.smartMeters = new ArrayList<>();
+        }
+        return smartMeters;
+    }
+
+    public void setSmartMeters(List<SmartMeter> smartMeters) {
+        this.smartMeters = smartMeters;
     }
 }
 

@@ -1,12 +1,19 @@
 package smartHomeManagement.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 /**
  * Created by Martina on 12.05.2016.
  */
+@Entity
 public class SmartMeter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private int SmartMeterNr;
     private String location;
@@ -14,6 +21,13 @@ public class SmartMeter {
     private List<Operator> operators;
 
     protected SmartMeter() {
+    }
+
+    public SmartMeter(int smartMeterNr, String location, Customer customer, List<Operator> operators) {
+        SmartMeterNr = smartMeterNr;
+        this.location = location;
+        this.customer = customer;
+        this.operators = operators;
     }
 
     public long getId() {

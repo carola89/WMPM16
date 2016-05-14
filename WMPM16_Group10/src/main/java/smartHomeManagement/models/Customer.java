@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Martina on 12.05.2016.
@@ -19,8 +21,8 @@ public class Customer {
     private String email;
     private String telNr;
     private String address;
-//    private List<Operator> operators;
-//    private List<SmartMeter>smartMeters;
+    private List<Operator> operators;
+    private SmartMeter smartMeters;
 
 
     protected Customer() {
@@ -32,6 +34,16 @@ public class Customer {
         this.email = email;
         this.telNr = telNr;
         this.address = address;
+    }
+
+    public Customer(int customerNR, String name, String email, String telNr, String address, List<Operator> operators, SmartMeter smartMeters) {
+        this.customerNR = customerNR;
+        this.name = name;
+        this.email = email;
+        this.telNr = telNr;
+        this.address = address;
+        this.operators = operators;
+        this.smartMeters = smartMeters;
     }
 
     public long getId() {
@@ -80,6 +92,26 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Operator> getOperators() {
+        if (this.operators == null) {
+            this.operators = new ArrayList<>();
+        }
+        return operators;
+    }
+
+    public void setOperators(List<Operator> operators) {
+        this.operators = operators;
+    }
+
+    public SmartMeter getSmartMeters() {
+
+        return smartMeters;
+    }
+
+    public void setSmartMeters(SmartMeter smartMeters) {
+        this.smartMeters = smartMeters;
     }
 
     @Override
