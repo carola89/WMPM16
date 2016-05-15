@@ -22,7 +22,7 @@ public class Customer {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "customer_operator", joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "operator_id", referencedColumnName = "id"))
     private List<Operator> operators;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
+    @OneToOne(mappedBy = "customer")
     private SmartMeter smartMeters;
 
 

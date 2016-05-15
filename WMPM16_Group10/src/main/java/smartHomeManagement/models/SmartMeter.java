@@ -12,7 +12,7 @@ public class SmartMeter {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private int SmartMeterNr;
+    private int smartMeterNr;
     private String location;
     @OneToOne
     @JoinColumn(name = "customer_id")
@@ -24,7 +24,7 @@ public class SmartMeter {
     }
 
     public SmartMeter(int smartMeterNr, String location, Customer customer, List<Operator> operators) {
-        SmartMeterNr = smartMeterNr;
+        this.smartMeterNr = smartMeterNr;
         this.location = location;
         this.customer = customer;
         this.operators = operators;
@@ -39,11 +39,11 @@ public class SmartMeter {
     }
 
     public int getSmartMeterNr() {
-        return SmartMeterNr;
+        return smartMeterNr;
     }
 
     public void setSmartMeterNr(int smartMeterNr) {
-        SmartMeterNr = smartMeterNr;
+        this.smartMeterNr = smartMeterNr;
     }
 
     public String getLocation() {

@@ -18,16 +18,16 @@ public class HeatingConsumption {
     private long standardValue;
     private long measuredValue;
     private Date date;
-    private SmartMeter smartMeter;
+    private int smartMeterNr;
 
     protected HeatingConsumption() {
     }
 
-    public HeatingConsumption(long standardValue, long measuredValue, Date date, SmartMeter smartMeter) {
+    public HeatingConsumption(long standardValue, long measuredValue, Date date, int smartMeter) {
         this.standardValue = standardValue;
         this.measuredValue = measuredValue;
         this.date = date;
-        this.smartMeter = smartMeter;
+        this.smartMeterNr = smartMeter;
     }
 
     public long getId() {
@@ -62,11 +62,11 @@ public class HeatingConsumption {
         this.date = date;
     }
 
-    public SmartMeter getSmartMeter() {
-        return smartMeter;
+    public int getSmartMeter() {
+        return smartMeterNr;
     }
 
-    public void setSmartMeter(SmartMeter smartMeter) {
-        this.smartMeter = smartMeter;
+    public void setSmartMeter(int smartMeter) {
+        this.smartMeterNr = smartMeter;
     }
 }
