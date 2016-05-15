@@ -3,7 +3,7 @@ package smartHomeManagement.beans;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component("myBean")
+@Component("smartHomeBean")
 public class SmartHomeBean {
 	
 	@Value("${greeting}")

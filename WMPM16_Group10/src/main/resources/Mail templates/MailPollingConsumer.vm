@@ -1,7 +1,7 @@
 Dear *company*,
-we have read your data and please find enclosed your data.
+we have read your data in the database. Please find enclosed your data.
 
 Best regards,
 Smart home
 
-${oldBody}
+//${oldBody}
