@@ -12,8 +12,12 @@ public class PollingConsumerRoute extends RouteBuilder {
 	
 	 @Override
 	    public void configure() throws Exception {
-		 from("timer://foo?period=5000").bean(pollingConsumerBean, "someBusinessLogic");
-		 from("activemq:queue.foo").to("mock:result");
+		 from("timer://foo?period=5000").to("sql:select * from GasConsumption").marshal().csv().to("file:target/out/gas");
+		 from("timer://foo?period=5000").to("sql:select * from ColdWaterConsumption").marshal().csv().to("file:target/out/water");
+		 from("timer://foo?period=5000").to("sql:select * from ElectricityConsumption").marshal().csv().to("file:target/out/electricity");
+		 from("timer://foo?period=5000").to("sql:select * from HeatingConsumption").marshal().csv().to("file:target/out/heating");
+		 from("timer://foo?period=5000").to("sql:select * from WarmWaterConsumption").marshal().csv().to("file:target/out/warmwater");
+		 
 	    }
 	 
 
