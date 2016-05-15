@@ -14,6 +14,7 @@ public class PollingConsumerRoute extends RouteBuilder {
 	    public void configure() throws Exception {
 		 from("timer://foo?period=5000").bean(pollingConsumerBean, "someBusinessLogic");
 		 from("activemq:queue.foo").to("mock:result");
+		 
 	    }
 	 
 
