@@ -1,34 +1,38 @@
 package smartHomeManagement.processor;
 
+import java.util.Map;
+
+import javax.activation.DataHandler;
+
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.camel.Pattern;
-import org.apache.camel.impl.DefaultMessage;
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import smartHomeManagement.exceptions.MailException;
 
 @Service
 public class MailProcessor {
 
-	private static final Logger log = LoggerFactory.getLogger(MailProcessor.class);
-	// private static final Pattern ID_PATTERN =
-	// Pattern.compile("(ID:)([0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12})");
+	   private static final Logger LOG = LoggerFactory.getLogger(MailProcessor.class);;  
 
-	public void process(Exchange exchange) throws MailException {
-		log.debug(ReflectionToStringBuilder.toString(exchange));
+			   public void process(Exchange exchange) throws Exception {   
 
-		Message in = exchange.getIn();
-		String inMessageBody = in.getBody(String.class);
-		String subject = in.getHeaders().get("Subject").toString();
-		log.debug("\n\nMail body:\n" + inMessageBody + "\n");
+			    LOG.debug("MailProcessor...");   
+			    String body = exchange.getIn().getBody(String.class);   
 
-		/**
-		 * Transform message body to model object
-		 */
+			    Map<String, DataHandler> attachments = exchange.getIn().getAttachments();   
+			    if (attachments.size() > 0) {   
+			     for (String name : attachments.keySet()) {   
+			      exchange.getOut().setHeader("attachmentName", name);   
+			     }   
+			    }   
 
+			    // read the attachments from the in exchange putting them back on the out   
+			    exchange.getOut().setAttachments(attachments);   
+
+			    // resetting the body on out exchange   
+			    exchange.getOut().setBody(body);   
+			    LOG.debug("MailProcessor complete");   
+			   }   
 	}
-}
+

@@ -10,6 +10,8 @@ public class PollingConsumerRoute extends RouteBuilder {
 	//pollingConsumerBean.setProducer(template);
 	//pollingConsumerBean.setConsumer(consumer);
 	
+	
+	
 	 @Override
 	    public void configure() throws Exception {
 		 from("timer://foo?period=5000").to("sql:select * from GasConsumption").marshal().csv().to("file:target/out/gas");
