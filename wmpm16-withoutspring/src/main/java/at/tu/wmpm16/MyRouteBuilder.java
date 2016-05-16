@@ -1,5 +1,6 @@
 package at.tu.wmpm16;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
 /**
@@ -11,6 +12,9 @@ public class MyRouteBuilder extends RouteBuilder {
      * Let's configure the Camel routing rules using Java code...
      */
     public void configure() {
+    	
+    	errorHandler(deadLetterChannel("jms:queue:dead")
+    			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
 
         // here is a sample which processes the input files
         // (leaving them in place - see the 'noop' flag)
