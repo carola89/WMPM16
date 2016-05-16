@@ -68,4 +68,13 @@ public class ColdWaterConsumption {
     public void setSmartMeterNr(int smartMeterNr) {
         this.smartMeterNr = smartMeterNr;
     }
+
+	@Override
+	public String toString() {
+		return "ColdWaterConsumption [id=" + id + ", standardValue="
+				+ standardValue + ", measuredValue=" + measuredValue
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
+	}
+    
+    
 }
