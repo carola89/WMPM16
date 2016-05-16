@@ -1,13 +1,19 @@
 package smartHomeManagement;
 
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import smartHomeManagement.models.ColdWaterConsumption;
 import smartHomeManagement.models.Customer;
+import smartHomeManagement.repositories.ColdWaterRepository;
 import smartHomeManagement.repositories.CustomerRepository;
 
 @SpringBootApplication
@@ -25,8 +31,7 @@ public class SmartHomeController {
 			// save a couple of customers
 			repository.save(new Customer(1, "Jack Bauer", "test@wmpm.com", "12345", "Schottenring 5"));
 			repository.save(new Customer(2, "Chloe O'Brian", "test@wmpm.com", "678943", "Schottenring 6"));
-
-
+			
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			for (Customer customer : repository.findAll()) {
@@ -42,4 +47,15 @@ public class SmartHomeController {
 			log.info("");
 		};
 	}
+	
+	@Bean
+	public CommandLineRunner demo(ColdWaterRepository repository) {
+		return (args) -> { 
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("jjjj-MM-dd");
+			//save a couple of ColdwaterConsumption
+			repository.save(new ColdWaterConsumption(1, 123456, 123, dateFormat.parse("2016-05-13"), 1));
+		};
+		
+}
 }

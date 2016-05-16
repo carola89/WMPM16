@@ -4,11 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import java.util.Date;
 
-/**
- * Created by Martina on 14.05.2016.
- */
 @Entity
 public class ColdWaterConsumption {
 
@@ -23,8 +21,9 @@ public class ColdWaterConsumption {
     protected ColdWaterConsumption() {
     }
 
-    public ColdWaterConsumption(long standardValue, long measuredValue, Date date, int smartMeter) {
-        this.standardValue = standardValue;
+    public ColdWaterConsumption(long id, long standardValue, long measuredValue, Date date, int smartMeter) {
+        this.id = id; 
+    	this.standardValue = standardValue;
         this.measuredValue = measuredValue;
         this.date = date;
         this.smartMeterNr = smartMeter;
