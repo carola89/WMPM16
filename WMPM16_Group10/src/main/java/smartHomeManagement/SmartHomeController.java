@@ -46,16 +46,16 @@ public class SmartHomeController {
 		};
 	}
 	
-	/*@Bean
-	public CommandLineRunner demo(ColdWaterRepository repository) {
+	@Bean
+	public CommandLineRunner demo2(ColdWaterRepository repository) {
 		return (args) -> { 
 			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("jjjj-MM-dd");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-mm-DD");
 			//save a couple of ColdwaterConsumption
 			repository.save(new ColdWaterConsumption(1, 123456, 123, dateFormat.parse("2016-05-13"), 1));
 			repository.save(new ColdWaterConsumption(2, 123456, 124, dateFormat.parse("2016-05-14"), 2));
 			repository.save(new ColdWaterConsumption(3, 123456, 125, dateFormat.parse("2016-05-15"), 3));
 		};
 		
-}*/
+	}
 }
