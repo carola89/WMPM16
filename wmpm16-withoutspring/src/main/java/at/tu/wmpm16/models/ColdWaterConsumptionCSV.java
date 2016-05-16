@@ -13,7 +13,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
  * 
  * @author gabriel
  */
-@CsvRecord(separator=",",skipFirstLine=true)
+@CsvRecord(separator=",")
 public class ColdWaterConsumptionCSV {
 	
 	@DataField(pos=1)

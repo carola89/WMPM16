@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
 import org.springframework.stereotype.Component;
 
@@ -32,15 +33,19 @@ public class PollingConsumerBean{
 //        return message;
     }
     
-    public List<Map<String,Object>> transform(Exchange exchange)
+    public List<Map<String, Object>> transform(Exchange exchange)
     {
       ColdWaterConsumption cwc = (ColdWaterConsumption) exchange.getIn().getBody();
   	  List<Map<String,Object>> unmarshalledModel = new ArrayList<Map<String,Object>>();
   	  Map<String, Object> mapp = new HashMap<String, Object>();
-  	  unmarshalledModel.add(mapp);
   	  mapp.put("ColdWaterConsumption", cwc);
+  	  unmarshalledModel.add(mapp);
   	  System.out.println("***" + unmarshalledModel);
   	  return unmarshalledModel;
+//      
+//      List<ColdWaterConsumption> cList = new ArrayList<ColdWaterConsumption>();
+//      cList.add(cwc);
+//      return cList;
     }
     
    

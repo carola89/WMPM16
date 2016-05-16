@@ -20,7 +20,7 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 
 		 DataFormat bindy = new BindyCsvDataFormat(ColdWaterConsumptionCSV.class);
 		 
-		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").bean(PollingConsumerBean.class, "doSomething").marshal(bindy).to("file:c:/wmpm/file?fileName=out.csv");
+		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").bean(new PollingConsumerBean(), "transform").marshal().csv().log("transformed").to("file:c:/wmpm/file?fileName=out.csv");
 //		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").process(new PollingConsumerBean()).marshal().csv().to("file:c:/wmpm/file");
 	    }
 	 
