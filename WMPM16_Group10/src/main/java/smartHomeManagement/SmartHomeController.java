@@ -1,7 +1,5 @@
 package smartHomeManagement;
 
-
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
@@ -48,14 +46,16 @@ public class SmartHomeController {
 		};
 	}
 	
-	@Bean
+	/*@Bean
 	public CommandLineRunner demo(ColdWaterRepository repository) {
 		return (args) -> { 
 			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("jjjj-MM-dd");
 			//save a couple of ColdwaterConsumption
 			repository.save(new ColdWaterConsumption(1, 123456, 123, dateFormat.parse("2016-05-13"), 1));
+			repository.save(new ColdWaterConsumption(2, 123456, 124, dateFormat.parse("2016-05-14"), 2));
+			repository.save(new ColdWaterConsumption(3, 123456, 125, dateFormat.parse("2016-05-15"), 3));
 		};
 		
-}
+}*/
 }
