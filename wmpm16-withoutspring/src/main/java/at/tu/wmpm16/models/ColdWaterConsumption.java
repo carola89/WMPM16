@@ -28,8 +28,17 @@ public class ColdWaterConsumption {
         this.date = date;
         this.smartMeterNr = smartMeter;
     }
+    
 
-    public long getId() {
+    public ColdWaterConsumption(long standardValue, long measuredValue, Date date, int smartMeterNr) {
+		super();
+		this.standardValue = standardValue;
+		this.measuredValue = measuredValue;
+		this.date = date;
+		this.smartMeterNr = smartMeterNr;
+	}
+
+	public long getId() {
         return id;
     }
 
