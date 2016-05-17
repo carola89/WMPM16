@@ -8,14 +8,14 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 
 /**
  * 
- * Modellklasse für CSV-Input Files, welche die unten definierten DataFields als Spalten enhalten
- * Wird von Camel-Bindy benutzt.
+ * model class for CSV files CSV-Input Files
+ * Called by Camel-Bindy
  * 
- * @author gabriel
  */
 @CsvRecord(separator=",")
 public class ColdWaterConsumptionCSV {
 	
+	//Data fields are for the columns
 	@DataField(pos=1)
 	private long id;
 	
@@ -73,9 +73,11 @@ public class ColdWaterConsumptionCSV {
 
 	@Override
 	public String toString() {
-		return "ColdWaterConsumptionCSV [id=" + id + ", standardValue="
+		//TODO
+		/*return "ColdWaterConsumptionCSV [id=" + id + ", standardValue="
 				+ standardValue + ", measuredValue=" + measuredValue
-				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";*/
+		return " Test ";
 	}
 	
 	

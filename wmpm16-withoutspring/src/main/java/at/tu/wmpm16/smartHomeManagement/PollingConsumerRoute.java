@@ -7,6 +7,7 @@ import org.apache.camel.spi.DataFormat;
 
 import at.tu.wmpm16.beans.PollingConsumerBean;
 import at.tu.wmpm16.models.ColdWaterConsumptionCSV;
+import at.tu.wmpm16.processor.FileAggregationStrategy;
 
 public class PollingConsumerRoute extends RouteBuilder {
 	
@@ -18,9 +19,11 @@ public class PollingConsumerRoute extends RouteBuilder {
 //		 from("timer://foo?period=5000").to("sql:select * from HeatingConsumption").marshal().csv().to("file:target/out/heating");
 //		 from("timer://foo?period=5000").to("sql:select * from WarmWaterConsumption").marshal().csv().to("file:target/out/warmwater");
 		 
-		 DataFormat bindy = new BindyCsvDataFormat(ColdWaterConsumptionCSV.class);
+		 //DataFormat bindy = new BindyCsvDataFormat(ColdWaterConsumptionCSV.class);
 		 
-		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").bean(new PollingConsumerBean(), "transform").marshal().csv().log("transformed").to("file:c:/wmpm/file?fileName=out.csv");
+		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").bean(new PollingConsumerBean(), "transform").marshal().csv().log("transformed").to("file:/Users/Patrick/wmpm/file?fileName=out.csv");
+		
+		 //aggregate(new FileAggregationStrategy())
 //		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o").process(new PollingConsumerBean()).marshal().csv().to("file:c:/wmpm/file");
 	    }
 	 

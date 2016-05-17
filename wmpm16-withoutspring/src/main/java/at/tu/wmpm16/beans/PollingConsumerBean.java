@@ -30,22 +30,24 @@ public class PollingConsumerBean{
  
     public void doSomething(Exchange message) {
         System.out.println("My ColdWaterConsumption Bean-Value" + ((ColdWaterConsumption) message.getIn().getBody()).getMeasuredValue());
-//        return message;
     }
     
     public List<Map<String, Object>> transform(Exchange exchange)
     {
       ColdWaterConsumption cwc = (ColdWaterConsumption) exchange.getIn().getBody();
+      
   	  List<Map<String,Object>> unmarshalledModel = new ArrayList<Map<String,Object>>();
+  	  
   	  Map<String, Object> mapp = new HashMap<String, Object>();
+  	  
   	  mapp.put("ColdWaterConsumption", cwc);
+  	  
+  	  for (int i = 0; i < mapp.size(); i++) {
   	  unmarshalledModel.add(mapp);
+  	  }
+  	  
   	  System.out.println("***" + unmarshalledModel);
   	  return unmarshalledModel;
-//      
-//      List<ColdWaterConsumption> cList = new ArrayList<ColdWaterConsumption>();
-//      cList.add(cwc);
-//      return cList;
     }
     
    
