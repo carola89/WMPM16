@@ -6,6 +6,7 @@ import org.apache.camel.dataformat.csv.CsvDataFormat;
 import org.apache.camel.spi.DataFormat;
 
 import at.tu.wmpm16.beans.PollingConsumerBean;
+import at.tu.wmpm16.beans.TransformToCSVBean;
 import at.tu.wmpm16.models.ColdWaterConsumptionCSV;
 import at.tu.wmpm16.processor.FileAggregationStrategy;
 
@@ -29,8 +30,8 @@ public class PollingConsumerRoute extends RouteBuilder {
 
 		from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o")
 				.bean(new PollingConsumerBean(), "transform").aggregate(new FileAggregationStrategy()).header("id")
-				.completionSize(3).marshal().csv().log("transformed")
-				.to("file:/Users/Patrick/wmpm/file?fileName=out.csv");
+				.completionSize(3).bean(new TransformToCSVBean()).marshal(bindy).log("transformed")
+				.to("file:C:/wmpm/file?fileName=out.csv");
 
 		// aggregate(new FileAggregationStrategy())
 		// from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select

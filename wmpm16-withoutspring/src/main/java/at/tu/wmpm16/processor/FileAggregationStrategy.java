@@ -24,7 +24,7 @@ public class FileAggregationStrategy implements AggregationStrategy {
         List<Map<String,Object>> oldlist = (List<Map<String, Object>>) oldExchange.getIn().getBody();
         oldlist.add(((List<Map<String,Object>>) newExchange.getIn().getBody()).get(0));
         oldExchange.getIn().setBody(oldlist);
-        System.out.println("**********" + oldExchange.getIn().getBody());
+//        System.out.println("**********" + oldExchange.getIn().getBody());
         return oldExchange;
     }
 }
