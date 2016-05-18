@@ -12,7 +12,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
  * Called by Camel-Bindy
  * 
  */
-@CsvRecord(separator=",")
+@CsvRecord(separator=",", generateHeaderColumns=true)
 public class ColdWaterConsumptionCSV {
 	
 	//Data fields are for the columns

@@ -42,11 +42,12 @@ public class PollingConsumerBean{
   	  
   	  mapp.put("ColdWaterConsumption", cwc);
   	  
-  	  for (int i = 0; i < mapp.size(); i++) {
+  	  exchange.getIn().setHeader("id", 1);
+  	  
   	  unmarshalledModel.add(mapp);
-  	  }
   	  
   	  System.out.println("***" + unmarshalledModel);
+  	  
   	  return unmarshalledModel;
     }
     
