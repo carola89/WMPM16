@@ -7,7 +7,6 @@ import org.apache.camel.MessageHistory;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.bindy.csv.BindyCsvDataFormat;
-import org.apache.camel.dataformat.csv.CsvDataFormat;
 import org.apache.camel.spi.DataFormat;
 
 import at.tu.wmpm16.beans.PollingConsumerBean;
@@ -29,7 +28,10 @@ public class PollingConsumerRoute extends RouteBuilder {
 		// HeatingConsumption").marshal().csv().to("file:target/out/heating");
 		// from("timer://foo?period=5000").to("sql:select * from
 		// WarmWaterConsumption").marshal().csv().to("file:target/out/warmwater");
-
+		
+		errorHandler(deadLetterChannel("log:dead?level=ERROR")
+    			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
+		
 		 DataFormat bindy = new
 		 BindyCsvDataFormat(ColdWaterConsumptionCSV.class);
 
@@ -46,6 +48,9 @@ public class PollingConsumerRoute extends RouteBuilder {
 					})
 				.to("file:C:/wmpm/file?fileName=out.csv");
 
+		
+//		from("log:dead?level=ERROR").to("mock:logger"); //---> DeadLetterChannel-TestLOG Output
+		
 		// aggregate(new FileAggregationStrategy())
 		// from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select
 		// o from at.tu.wmpm16.models.ColdWaterConsumption o").process(new

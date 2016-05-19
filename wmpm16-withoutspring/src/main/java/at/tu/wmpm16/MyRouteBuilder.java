@@ -13,7 +13,7 @@ public class MyRouteBuilder extends RouteBuilder {
      */
     public void configure() {
     	
-    	errorHandler(deadLetterChannel("jms:queue:dead")
+    	errorHandler(deadLetterChannel("log:dead?level=ERROR")
     			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
 
         // here is a sample which processes the input files
