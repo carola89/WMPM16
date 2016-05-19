@@ -45,6 +45,15 @@ public class PollingConsumerRoute extends RouteBuilder {
 							System.out.println("Message History " + m.getNode().getShortName());
 						}
 					}
+					}).
+				wireTap("jms:consumptionAudit").
+				process(new Processor() {
+					public void process(Exchange exchange) throws Exception {
+							System.out.println("Polling Consumer WireTap: ");
+							System.out.println("Message id: " + exchange.getIn().getMessageId());
+							System.out.println("Message header: " + exchange.getIn().getHeader("id"));
+							System.out.println("Message body: " + exchange.getIn().getBody());
+					}
 					})
 				.to("file:C:/wmpm/file?fileName=out.csv");
 

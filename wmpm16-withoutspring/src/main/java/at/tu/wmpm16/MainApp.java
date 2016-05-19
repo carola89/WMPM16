@@ -1,11 +1,12 @@
 package at.tu.wmpm16;
 
-import java.text.SimpleDateFormat;
+import javax.jms.ConnectionFactory;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.camel.CamelContext;
+import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.main.Main;
-import org.springframework.context.annotation.Bean;
 
-import at.tu.wmpm16.models.ColdWaterConsumption;
 import at.tu.wmpm16.smartHomeManagement.PollingConsumerRoute;
 
 /**
@@ -19,6 +20,9 @@ public class MainApp {
     public static void main(String... args) throws Exception {
         Main main = new Main();
         //main.addRouteBuilder(new MyRouteBuilder());
+        CamelContext context = main.getOrCreateCamelContext();
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
+        context.addComponent("jms", JmsComponent.jmsComponent(connectionFactory));
         main.addRouteBuilder(new PollingConsumerRoute());
         main.run(args);
     }
