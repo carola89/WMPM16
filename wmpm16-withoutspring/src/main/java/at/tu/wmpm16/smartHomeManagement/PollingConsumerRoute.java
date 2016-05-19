@@ -1,5 +1,10 @@
 package at.tu.wmpm16.smartHomeManagement;
 
+import java.util.List;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.MessageHistory;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.bindy.csv.BindyCsvDataFormat;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
@@ -30,7 +35,15 @@ public class PollingConsumerRoute extends RouteBuilder {
 
 		from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o")
 				.bean(new PollingConsumerBean(), "transform").aggregate(new FileAggregationStrategy()).header("id")
-				.completionSize(3).bean(new TransformToCSVBean()).marshal(bindy).log("transformed")
+				.completionSize(3).bean(new TransformToCSVBean()).marshal(bindy).log("transformed").
+				process(new Processor() {
+					public void process(Exchange exchange) throws Exception {
+						List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
+						for (MessageHistory m : list){
+							System.out.println("Message History " + m.getNode().getShortName());
+						}
+					}
+					})
 				.to("file:C:/wmpm/file?fileName=out.csv");
 
 		// aggregate(new FileAggregationStrategy())
