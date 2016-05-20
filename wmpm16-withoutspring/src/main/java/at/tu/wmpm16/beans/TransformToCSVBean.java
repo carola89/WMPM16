@@ -39,7 +39,7 @@ public class TransformToCSVBean {
 	private ColdWaterConsumptionCSV mapToCWCCSV(ColdWaterConsumption cwc) {
 		if (null != cwc) {
 			ColdWaterConsumptionCSV csv = new ColdWaterConsumptionCSV();
-			csv.setDate(cwc.getDate());
+			csv.setDate(cwc.getDate().toString());
 			csv.setId(cwc.getId());
 			csv.setMeasuredValue(cwc.getMeasuredValue());
 			csv.setSmartMeterNr(cwc.getSmartMeterNr());

@@ -26,7 +26,7 @@ public class ColdWaterConsumptionCSV {
 	private long measuredValue;
 
 	@DataField(pos=4)
-	private Date date;
+	private String date;
 	
 	@DataField(pos=5)
 	private int smartMeterNr;
@@ -39,11 +39,11 @@ public class ColdWaterConsumptionCSV {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

@@ -9,9 +9,11 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.bindy.csv.BindyCsvDataFormat;
 import org.apache.camel.spi.DataFormat;
 
+import at.tu.wmpm16.beans.ContentFilterForCustomerBean;
 import at.tu.wmpm16.beans.PollingConsumerBean;
 import at.tu.wmpm16.beans.TransformToCSVBean;
 import at.tu.wmpm16.models.ColdWaterConsumptionCSV;
+import at.tu.wmpm16.models.FilteredColdWaterConsumptionCSV;
 import at.tu.wmpm16.processor.FileAggregationStrategy;
 import at.tu.wmpm16.processor.WireTapLogPolling;
 
@@ -35,10 +37,14 @@ public class PollingConsumerRoute extends RouteBuilder {
 		
 		 DataFormat bindy = new
 		 BindyCsvDataFormat(ColdWaterConsumptionCSV.class);
-
+		 
+		 DataFormat bindyCustomer = new
+				 BindyCsvDataFormat(FilteredColdWaterConsumptionCSV.class);
+		
 		from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o")
 				.bean(new PollingConsumerBean(), "transform").aggregate(new FileAggregationStrategy()).header("id")
-				.completionSize(3).bean(new TransformToCSVBean()).marshal(bindy).log("transformed").
+				.completionSize(3)
+				.bean(new TransformToCSVBean()).marshal(bindy).log("transformed").
 				process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 						List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
@@ -46,11 +52,10 @@ public class PollingConsumerRoute extends RouteBuilder {
 							System.out.println("Message History " + m.getNode().getShortName());
 						}
 					}
-					}).
-				wireTap("jms:consumptionAudit").
-				process(new WireTapLogPolling())
-				.to("file:C:/wmpm/file?fileName=out.csv");
-
+					})
+				.wireTap("jms:consumptionAudit")
+				.process(new WireTapLogPolling())
+				.to("file:C:/wmpm/file?fileName=company.csv");
 		
 //		from("log:dead?level=ERROR").to("mock:logger"); //---> DeadLetterChannel-TestLOG Output
 		
