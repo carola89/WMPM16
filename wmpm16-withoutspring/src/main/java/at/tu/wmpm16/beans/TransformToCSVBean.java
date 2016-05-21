@@ -2,7 +2,6 @@ package at.tu.wmpm16.beans;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,6 +15,7 @@ import at.tu.wmpm16.models.ColdWaterConsumptionCSV;
 @Component
 public class TransformToCSVBean {
 
+	@SuppressWarnings("unchecked")
 	public Collection<ColdWaterConsumptionCSV> transform(Exchange exchange) {
 		List<Map<String, Object>> cwcs = (List<Map<String, Object>>) exchange
 				.getIn().getBody();
