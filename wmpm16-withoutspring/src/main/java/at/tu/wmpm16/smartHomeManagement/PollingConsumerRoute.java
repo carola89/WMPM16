@@ -46,6 +46,7 @@ public class PollingConsumerRoute extends RouteBuilder {
 				.completionSize(3)
 				.bean(new TransformToCSVBean()).marshal(bindy).log("transformed").
 				process(new Processor() {
+					@SuppressWarnings("unchecked")
 					public void process(Exchange exchange) throws Exception {
 						List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
 						for (MessageHistory m : list){
@@ -55,6 +56,8 @@ public class PollingConsumerRoute extends RouteBuilder {
 					})
 				.wireTap("jms:consumptionAudit")
 				.process(new WireTapLogPolling())
+				.setHeader("Subject", constant("Dear Customer, "))
+				.setHeader("From", constant("SmartHomeManagement"))
 				.to("file:C:/wmpm/file?fileName=company.csv");
 		
 //		from("log:dead?level=ERROR").to("mock:logger"); //---> DeadLetterChannel-TestLOG Output
