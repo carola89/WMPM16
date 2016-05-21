@@ -6,6 +6,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
 
+import at.tu.wmpm16.beans.DeleteFilesAfterDropboxUpdate;
 import at.tu.wmpm16.processor.WireTapLogContentFilter;
 import at.tu.wmpm16.processor.WireTapLogPolling;
 
@@ -23,27 +24,129 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	    csv.setDelimiter(',');
 	    csv.setQuoteDisabled(true);
 	    
-	    from("file:C:/wmpm/file?fileName=company.csv&noop=true&delay=15m")
-	    .unmarshal(csv)
-        .convertBodyTo(List.class)
-        .process(new Processor() {
+	    //Windows
+		 String filePath = new String("file:c:/wmpm/file");
+		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
-                for (List<String> line : data) {
-                   
-                	line.remove(0);
-                	line.remove(line.size()-1);
-                	
-                }
-            }
-        }).marshal(csv)
-        .wireTap("jms:filteringAudit")
-		.process(new WireTapLogContentFilter())
-        .to("file:C:/wmpm/file?fileName=customer.csv")
-        .log("done.").end();
+		 //Mac
+//		 String filePath = new String("file:/Users/Patrick/wmpm/file");
+//		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
+	    
+		 from(filePath + "?fileName=coldwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
+		    .unmarshal(csv)
+	        .convertBodyTo(List.class)
+	        .process(new Processor() {
+
+	            @Override
+	            public void process(Exchange exchange) throws Exception {
+	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
+	                for (List<String> line : data) {
+	                   
+	                	line.remove(0);
+	                	line.remove(line.size()-1);
+	                	
+	                }
+	            }
+	        }).marshal(csv)
+	        .wireTap("jms:filteringAudit")
+			.process(new WireTapLogContentFilter())
+	        .to(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+	        .log("done.")
+	        .end();
+		 
+		 from(filePath + "?fileName=gasconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
+		    .unmarshal(csv)
+	        .convertBodyTo(List.class)
+	        .process(new Processor() {
+
+	            @Override
+	            public void process(Exchange exchange) throws Exception {
+	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
+	                for (List<String> line : data) {
+	                   
+	                	line.remove(0);
+	                	line.remove(line.size()-1);
+	                	
+	                }
+	            }
+	        }).marshal(csv)
+	        .wireTap("jms:filteringAudit")
+			.process(new WireTapLogContentFilter())
+	        .to(filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+	        .log("done.")
+	        .end();
+		 
+		 from(filePath + "?fileName=electricityconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
+		    .unmarshal(csv)
+	        .convertBodyTo(List.class)
+	        .process(new Processor() {
+
+	            @Override
+	            public void process(Exchange exchange) throws Exception {
+	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
+	                for (List<String> line : data) {
+	                   
+	                	line.remove(0);
+	                	line.remove(line.size()-1);
+	                	
+	                }
+	            }
+	        }).marshal(csv)
+	        .wireTap("jms:filteringAudit")
+			.process(new WireTapLogContentFilter())
+	        .to(filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+	        .log("done.")
+	        .end();
+		 
+		 from(filePath + "?fileName=heatingconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
+		    .unmarshal(csv)
+	        .convertBodyTo(List.class)
+	        .process(new Processor() {
+
+	            @Override
+	            public void process(Exchange exchange) throws Exception {
+	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
+	                for (List<String> line : data) {
+	                   
+	                	line.remove(0);
+	                	line.remove(line.size()-1);
+	                	
+	                }
+	            }
+	        }).marshal(csv)
+	        .wireTap("jms:filteringAudit")
+			.process(new WireTapLogContentFilter())
+	        .to(filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+	        .log("done.")
+	        .end();
+		
+		 from(filePath + "?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
+		    .unmarshal(csv)
+	        .convertBodyTo(List.class)
+	        .process(new Processor() {
+
+	            @Override
+	            public void process(Exchange exchange) throws Exception {
+	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
+	                for (List<String> line : data) {
+	                   
+	                	line.remove(0);
+	                	line.remove(line.size()-1);
+	                	
+	                }
+	            }
+	        }).marshal(csv)
+	        .wireTap("jms:filteringAudit")
+			.process(new WireTapLogContentFilter())
+	        .to(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+	        .log("done.")
+	        .to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + filePathDropbox + "&remotePath=/consumptions")
+			.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
+	        .end();
 		
 	}
+	}
+	
+	
 
-}
+
