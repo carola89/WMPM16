@@ -7,6 +7,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
 
 import at.tu.wmpm16.beans.DeleteFilesAfterDropboxUpdate;
+import at.tu.wmpm16.beans.FileAsMailAttachementBean;
+import at.tu.wmpm16.processor.MailProcessor;
 import at.tu.wmpm16.processor.WireTapLogContentFilter;
 import at.tu.wmpm16.processor.WireTapLogPolling;
 
@@ -25,12 +27,12 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	    csv.setQuoteDisabled(true);
 	    
 	    //Windows
-		 String filePath = new String("file:c:/wmpm/file");
-		 String filePathDropbox = new String ("c:\\wmpm\\file");
+//		 String filePath = new String("file:c:/wmpm/file");
+//		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
 		 //Mac
-//		 String filePath = new String("file:/Users/Patrick/wmpm/file");
-//		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
+		 String filePath = new String("file:/Users/Patrick/wmpm/file");
+		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
 	    
 		 from(filePath + "?fileName=coldwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
@@ -53,6 +55,12 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .to(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
 	        .end();
+		 
+		 from("direct:sendMail")
+		 .bean(FileAsMailAttachementBean.class, "process")
+		 .setHeader("Subject", constant("testmail"))
+	 	 .setBody(constant("hello"))
+		 .to("smtps://smtp.gmail.com:587?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com");
 		 
 		 from(filePath + "?fileName=gasconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)

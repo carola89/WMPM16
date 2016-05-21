@@ -17,6 +17,12 @@ public class MainApp {
 
     /**
      * A main() so we can easily run these routing rules in our IDE
+     * 
+     * IMPORTANT:
+     * Please configure the following classes regarding your used operating system (mac, windows):
+     * DeleteFilesAfterDropboxUpdate
+     * ContentFilterForCustomerRoute
+     * PollingConsumerRoute
      */
     public static void main(String... args) throws Exception {
         Main main = new Main();

@@ -6,9 +6,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DeleteFilesAfterDropboxUpdate {
+	
+	//Mac
+	String path = new String("/Users/Patrick/wmpm/file");
+	
+	//Windows
+//	String path = new String("c:/wmpm/file");
 
 	public void delete(){
-		File f = new File("c:/wmpm/file");
+		File f = new File(path);
 		for (File file : f.listFiles()) {
 			file.delete();
 		}
