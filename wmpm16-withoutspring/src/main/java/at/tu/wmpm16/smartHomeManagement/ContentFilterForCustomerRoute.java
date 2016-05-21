@@ -56,8 +56,9 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .log("done.")
 	        .end();
 		 
-		 from("direct:sendMail")
+		 from(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 		 .bean(FileAsMailAttachementBean.class, "process")
+		 .process(new MailProcessor())
 		 .setHeader("Subject", constant("testmail"))
 	 	 .setBody(constant("hello"))
 		 .to("smtps://smtp.gmail.com:587?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com");
