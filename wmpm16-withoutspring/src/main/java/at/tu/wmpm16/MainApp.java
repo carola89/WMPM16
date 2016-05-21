@@ -7,6 +7,7 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.main.Main;
 
+import at.tu.wmpm16.smartHomeManagement.ContentFilterForCustomerRoute;
 import at.tu.wmpm16.smartHomeManagement.PollingConsumerRoute;
 
 /**
@@ -24,6 +25,7 @@ public class MainApp {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
         context.addComponent("jms", JmsComponent.jmsComponent(connectionFactory));
         main.addRouteBuilder(new PollingConsumerRoute());
+        main.addRouteBuilder(new ContentFilterForCustomerRoute());
         main.run(args);
     }
     
