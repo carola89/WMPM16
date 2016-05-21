@@ -84,7 +84,6 @@ public class PollingConsumerRoute extends RouteBuilder {
 			})
 		.wireTap("jms:consumptionAudit")
 		.process(new WireTapLogPolling());
-		
 //		 from("file:c:/wmpm/file")
 //			 .bean(FileAsMailAttachementBean.class, "process")
 //			 .setHeader("Subject", constant("testmail"))
