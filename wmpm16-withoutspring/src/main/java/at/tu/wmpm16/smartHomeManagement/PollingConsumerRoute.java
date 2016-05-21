@@ -32,7 +32,14 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 DataFormat bindyGc = new BindyCsvDataFormat(GasConsumptionCSV.class);
 		 DataFormat bindyWwc = new BindyCsvDataFormat(WarmWaterConsumptionCSV.class);
 		 DataFormat bindyHc = new BindyCsvDataFormat(HeatingConsumptionCSV.class);
+		 
+		 //Windows
+//		 String filePath = new String("file:c:/wmpm/file");
+//		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
+		 //Mac
+		 String filePath = new String("file:/Users/Patrick/wmpm/file");
+		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
 		 
 		 from("jpa://at.tu.wmpm16.models.SmartMeterConsumptions?consumeDelete=false&consumer.delay=50000&consumer.query=select c from at.tu.wmpm16.models.SmartMeterConsumptions c")
 		 	.split().method(SplitSmartMeterConsumptionsToSingleConsumptionsBean.class, "splitBody")
@@ -41,32 +48,32 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 			.to("jpa://at.tu.wmpm16.models.ColdWaterConsumption")
 		 			.bean(TransformAllToCSV.class, "transform")
 		 			.marshal(bindyCwc)
-		 			.to("file:c:/wmpm/file?fileName=coldwaterconsumption-${date:now:yyyyMMddhhmmss}.csv")
+		 			.to(filePath + "?fileName=coldwaterconsumption-${date:now:yyyyMMddhhmmss}.csv")
 		 			.to("direct:log")
 		 		.when(body().convertToString().contains("GasConsumption"))
 		 			.to("jpa://at.tu.wmpm16.models.GasConsumption")
 		 			.bean(TransformAllToCSV.class, "transform")
 		 			.marshal(bindyGc)
-		 			.to("file:c:/wmpm/file?fileName=gasconsumption-${date:now:yyyyMMddhhmmss}.csv")
+		 			.to(filePath + "?fileName=gasconsumption-${date:now:yyyyMMddhhmmss}.csv")
 		 			.to("direct:log")
 		 		.when(body().convertToString().contains("ElectricityConsumption"))
 		 			.to("jpa://at.tu.wmpm16.models.ElectricityConsumption")
 		 			.bean(TransformAllToCSV.class, "transform")
 		 			.marshal(bindyEc)
-		 			.to("file:c:/wmpm/file?fileName=electricityconsumption-${date:now:yyyyMMddhhmmss}.csv")
+		 			.to(filePath + "?fileName=electricityconsumption-${date:now:yyyyMMddhhmmss}.csv")
 		 			.to("direct:log")
 		 		.when(body().convertToString().contains("HeatingConsumption"))
 		 			.to("jpa://at.tu.wmpm16.models.HeatingConsumption")
 		 			.bean(TransformAllToCSV.class, "transform")
 		 			.marshal(bindyHc)
-		 			.to("file:c:/wmpm/file?fileName=heatingconsumption-${date:now:yyyyMMddhhmmss}.csv")
+		 			.to(filePath + "?fileName=heatingconsumption-${date:now:yyyyMMddhhmmss}.csv")
 		 			.to("direct:log")
 		 		.when(body().convertToString().contains("WarmWaterConsumption"))
 		 			.to("jpa://at.tu.wmpm16.models.WarmWaterConsumption")
 		 			.bean(TransformAllToCSV.class, "transform")
 		 			.marshal(bindyWwc)
-		 			.to("file:c:/wmpm/file?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmmss}.csv")
-		 			.to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=c:\\wmpm\\file&remotePath=/consumptions")
+		 			.to(filePath + "?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmmss}.csv")
+		 			.to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + filePathDropbox + "&remotePath=/consumptions")
 		 			.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
 		 			.to("direct:log")
 		 	.endChoice()
