@@ -10,7 +10,7 @@ import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
 import at.tu.wmpm16.models.ColdWaterConsumption;
-import at.tu.wmpm16.models.ColdWaterConsumptionCSV;
+import at.tu.wmpm16.models.csv.ColdWaterConsumptionCSV;
 
 @Component
 public class TransformToCSVBean {

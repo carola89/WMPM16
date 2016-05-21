@@ -1,4 +1,4 @@
-package at.tu.wmpm16.models;
+package at.tu.wmpm16.models.csv;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
  * 
  */
 @CsvRecord(separator=",", generateHeaderColumns=true)
-public class ColdWaterConsumptionCSV {
+public class HeatingConsumptionCSV {
 	
 	//Data fields are for the columns
 	@DataField(pos=1)
@@ -73,12 +73,11 @@ public class ColdWaterConsumptionCSV {
 
 	@Override
 	public String toString() {
-		//TODO
-		/*return "ColdWaterConsumptionCSV [id=" + id + ", standardValue="
+		return "HeatingConsumptionCSV [id=" + id + ", standardValue="
 				+ standardValue + ", measuredValue=" + measuredValue
-				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";*/
-		return " Test ";
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
 	}
+
 	
 	
 }
