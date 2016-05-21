@@ -5,6 +5,10 @@ import java.util.List;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
+
+import at.tu.wmpm16.processor.WireTapLogContentFilter;
+import at.tu.wmpm16.processor.WireTapLogPolling;
+
 import org.apache.camel.Processor;
 
 public class ContentFilterForCustomerRoute extends RouteBuilder{
@@ -34,7 +38,10 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
                 	
                 }
             }
-        }).marshal(csv).to("file:C:/wmpm/file?fileName=customer.csv")
+        }).marshal(csv)
+        .wireTap("jms:filteringAudit")
+		.process(new WireTapLogContentFilter())
+        .to("file:C:/wmpm/file?fileName=customer.csv")
         .log("done.").end();
 		
 	}
