@@ -10,8 +10,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import at.tu.wmpm16.models.ColdWaterConsumption;
-import at.tu.wmpm16.models.Customer;
+import at.tu.wmpm16.models.SmartMeterConsumptions;
 
 public class TestData {
 	
@@ -29,25 +28,22 @@ public class TestData {
 	@Test
 	public void insertData() throws ParseException{
 		
-		//ColdWaterConsumption
 		SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-mm-DD");
-		ColdWaterConsumption c1 = new ColdWaterConsumption(123456, 123, dateFormat.parse("2016-05-13"), 1);
-		ColdWaterConsumption c2 = new ColdWaterConsumption(123456, 124, dateFormat.parse("2016-05-14"), 2);
-		ColdWaterConsumption c3 = new ColdWaterConsumption(123456, 125, dateFormat.parse("2016-05-15"), 3);
 		
-		//Customer
-		Customer customer1 = new Customer(1, "Jack Bauer", "test@wmpm.com", "12345", "Schottenring 5");
-		Customer customer2 = new Customer(2, "Chloe O'Brian", "test@wmpm.com", "678943", "Schottenring 6");
-		Customer customer3 = new Customer(1, "Patrick Sommer", "test@wmpm.com", "12345", "Schottenring 7");
+		SmartMeterConsumptions data1 = new SmartMeterConsumptions(1, 1, dateFormat.parse("2016-05-13"), 0, 0, 0, 0, 0); 
+		SmartMeterConsumptions data2 = new SmartMeterConsumptions(2, 2, dateFormat.parse("2016-05-14"), 0, 0, 0, 0, 0);
+		SmartMeterConsumptions data3 = new SmartMeterConsumptions(3, 3, dateFormat.parse("2016-05-15"), 0, 0, 0, 0, 0); 
+		SmartMeterConsumptions data4 = new SmartMeterConsumptions(4, 4, dateFormat.parse("2016-05-16"), 0, 0, 0, 0, 0); 
+		SmartMeterConsumptions data5 = new SmartMeterConsumptions(5, 5, dateFormat.parse("2016-05-17"), 0, 0, 0, 0, 0); 
+		SmartMeterConsumptions data6 = new SmartMeterConsumptions(6, 6, dateFormat.parse("2016-05-18"), 0, 0, 0, 0, 0); 
+
 		
-		//GasConsumption
-		
-		
-		//ElectricityConsumption
-		
-		em.persist(c1);
-		em.persist(c2);
-		em.persist(c3);
+		em.merge(data1);
+		em.merge(data2);
+		em.merge(data3);
+		em.merge(data4);
+		em.merge(data5);
+		em.merge(data6);
 		em.getTransaction().commit();
 		log.info("Testdata");
 		

@@ -20,7 +20,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
 			<!-- Mac -->
-			<property name="hibernate.connection.url" value="jdbc:h2:/Users/Patrick/wmpm/file"/>
+			<property name="hibernate.connection.url" value="jdbc:h2:/Users/Patrick/wmpm/db"/>
 			<!-- Windows -->
 			<!-- <property name="hibernate.connection.url" value="jdbc:h2:c:./h2-wmpm"/> -->
 			<property name="hibernate.connection.user" value="sa" />
