@@ -8,9 +8,7 @@ import org.apache.camel.dataformat.csv.CsvDataFormat;
 
 import at.tu.wmpm16.beans.DeleteFilesAfterDropboxUpdate;
 import at.tu.wmpm16.beans.FileAsMailAttachementBean;
-import at.tu.wmpm16.processor.MailProcessor;
 import at.tu.wmpm16.processor.WireTapLogContentFilter;
-import at.tu.wmpm16.processor.WireTapLogPolling;
 
 import org.apache.camel.Processor;
 
@@ -39,7 +37,8 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .convertBodyTo(List.class)
 	        .process(new Processor() {
 
-	            @Override
+	            @SuppressWarnings("unchecked")
+				@Override
 	            public void process(Exchange exchange) throws Exception {
 	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
 	                for (List<String> line : data) {
@@ -55,20 +54,24 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .to(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
 	        .end();
-		 
+
+		 //Mail coldwaterconsumptionCustomer
 		 from(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 		 .bean(FileAsMailAttachementBean.class, "process")
-		 .process(new MailProcessor())
-		 .setHeader("Subject", constant("testmail"))
-	 	 .setBody(constant("hello"))
-		 .to("smtps://smtp.gmail.com:587?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com");
+		 .setHeader("Subject", constant("Information mail ColdwaterConsumption"))
+		 .setHeader("From", constant("wmpm16.10@gmail.com"))
+	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
+		 //.to("velocity://mail-templates/mail.vm")
+		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .log("Email done coldwaterconsumptionCustomer");
 		 
 		 from(filePath + "?fileName=gasconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
 	        .convertBodyTo(List.class)
 	        .process(new Processor() {
 
-	            @Override
+	            @SuppressWarnings("unchecked")
+				@Override
 	            public void process(Exchange exchange) throws Exception {
 	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
 	                for (List<String> line : data) {
@@ -85,12 +88,23 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .log("done.")
 	        .end();
 		 
+		 //Mail gasconsumptionCustomer
+		 from(filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 .bean(FileAsMailAttachementBean.class, "process")
+		 .setHeader("Subject", constant("Information mail GasConsumption"))
+		 .setHeader("From", constant("wmpm16.10@gmail.com"))
+	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
+		 //.to("velocity://mail-templates/mail.vm")
+		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .log("Email done gasconsumptionCustomer");
+		 
 		 from(filePath + "?fileName=electricityconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
 	        .convertBodyTo(List.class)
 	        .process(new Processor() {
 
-	            @Override
+	            @SuppressWarnings("unchecked")
+				@Override
 	            public void process(Exchange exchange) throws Exception {
 	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
 	                for (List<String> line : data) {
@@ -107,12 +121,23 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .log("done.")
 	        .end();
 		 
+		 //Mail electricityconsumptionCustomer
+		 from(filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 .bean(FileAsMailAttachementBean.class, "process")
+		 .setHeader("Subject", constant("Information mail ElectricityConsumption"))
+		 .setHeader("From", constant("wmpm16.10@gmail.com"))
+	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
+		 //.to("velocity://mail-templates/mail.vm")
+		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .log("Email done electricityconsumptionCustomer");
+		 
 		 from(filePath + "?fileName=heatingconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
 	        .convertBodyTo(List.class)
 	        .process(new Processor() {
 
-	            @Override
+	            @SuppressWarnings("unchecked")
+				@Override
 	            public void process(Exchange exchange) throws Exception {
 	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
 	                for (List<String> line : data) {
@@ -128,13 +153,24 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .to(filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
 	        .end();
+		 
+		 //Mail heatingconsumptionCustomer
+		 from(filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 .bean(FileAsMailAttachementBean.class, "process")
+		 .setHeader("Subject", constant("Information mail HeatingConsumption"))
+		 .setHeader("From", constant("wmpm16.10@gmail.com"))
+	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
+		 //.to("velocity://mail-templates/mail.vm")
+		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .log("Email done heatingconsumptionCustomer");
 		
 		 from(filePath + "?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
 	        .convertBodyTo(List.class)
 	        .process(new Processor() {
 
-	            @Override
+	            @SuppressWarnings("unchecked")
+				@Override
 	            public void process(Exchange exchange) throws Exception {
 	                List<List<String>> data = (List<List<String>>) exchange.getIn().getBody();
 	                for (List<String> line : data) {
@@ -148,7 +184,16 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
 	        .to(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
-	        .log("done.")
+	        .log("done.");
+			//Mail warmwaterconsumptionCustomer
+		 	from(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 	.bean(FileAsMailAttachementBean.class, "process")
+		 	.setHeader("Subject", constant("Information mail WarmwaterConsumption"))
+		 	.setHeader("From", constant("wmpm16.10@gmail.com"))
+		 	.setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
+		 	//.to("velocity://mail-templates/mail.vm")
+		 	.to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 	.log("Email done warmwaterconsumptionCustomer")
 	        .to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + filePathDropbox + "&remotePath=/consumptions")
 			.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
 	        .end();

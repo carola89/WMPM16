@@ -8,6 +8,9 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 import at.tu.wmpm16.models.Customer;
+
+
+
 //Um diesen Teil testen zu können, muss der SMPP Client gestartet werden ( SMPPSim/startsmppsim.bat ) 
 public class FeeCheckRoute extends RouteBuilder {
 
@@ -18,7 +21,6 @@ public class FeeCheckRoute extends RouteBuilder {
 	 .process(new Processor() {
 			@SuppressWarnings("unchecked")
 			public void process(Exchange exchange) throws Exception {
-				System.out.println("Message History AAAA1 ");
 
 				Customer c = (Customer) exchange.getIn().getBody();
 				List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
