@@ -11,6 +11,12 @@
     	<from uri="file:c:/wmpm/file"></from><to uri="file:c:/wmpm/file2"></to>
     </route>
 </camelContext>
+
+   <bean id="activemq" 
+      class="org.apache.activemq.camel.component.ActiveMQComponent">
+      <property name="brokerURL" value="vm://localhost1"/>
+   </bean>
+ 
     
     <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
        <property name="entityManagerFactory" ref="entityManagerFactory"/>

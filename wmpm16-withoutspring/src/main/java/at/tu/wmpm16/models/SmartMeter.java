@@ -14,7 +14,7 @@ public class SmartMeter {
     private long id;
     private int smartMeterNr;
     private String location;
-    @OneToOne
+    @OneToOne(orphanRemoval=true)
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @ManyToMany(mappedBy = "smartMeters")

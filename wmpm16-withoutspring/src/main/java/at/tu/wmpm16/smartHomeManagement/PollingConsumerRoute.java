@@ -12,6 +12,7 @@ import org.apache.camel.spi.DataFormat;
 import at.tu.wmpm16.beans.DeleteFilesAfterDropboxUpdate;
 import at.tu.wmpm16.beans.SplitSmartMeterConsumptionsToSingleConsumptionsBean;
 import at.tu.wmpm16.beans.TransformAllToCSV;
+import at.tu.wmpm16.models.Customer;
 import at.tu.wmpm16.models.csv.ColdWaterConsumptionCSV;
 import at.tu.wmpm16.models.csv.ElectricityConsumptionCSV;
 import at.tu.wmpm16.models.csv.GasConsumptionCSV;
@@ -34,12 +35,12 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 DataFormat bindyHc = new BindyCsvDataFormat(HeatingConsumptionCSV.class);
 		 
 		 //Windows
-		 //String filePath = new String("file:c:/wmpm/file");
-		 //String filePathDropbox = new String ("c:\\wmpm\\file");
+		 String filePath = new String("file:c:/wmpm/file");
+		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
 		 //Mac
-		 String filePath = new String("file:/Users/Patrick/wmpm/file");
-		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
+		 //String filePath = new String("file:/Users/Patrick/wmpm/file");
+		 //String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
 	 
 		 from("jpa://at.tu.wmpm16.models.SmartMeterConsumptions?consumeDelete=false&consumer.delay=200000&consumer.query=select c from at.tu.wmpm16.models.SmartMeterConsumptions c")
 		 	.split().method(SplitSmartMeterConsumptionsToSingleConsumptionsBean.class, "splitBody")
@@ -91,6 +92,25 @@ public class PollingConsumerRoute extends RouteBuilder {
 			})
 		.wireTap("jms:consumptionAudit")
 		.process(new WireTapLogPolling());
+		 
+		 	
+//		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.resultClass=at.tu.wmpm16.models.Customer&consumer.delay=200000&consumer.nativeQuery=select customer.* from customer, (select sn,s,v,location,smartmeternr,customer_id from (select sn,s,v from (SELECT sum(measuredValue) s,standardValue v,smartMeterNr sn FROM ColdWaterConsumption group by smartMeterNr,standardvalue) where s>v),smartmeter where smartmeternr = sn) where customer_id = customer.id")
+//		 .process(new Processor() {
+//				@SuppressWarnings("unchecked")
+//				public void process(Exchange exchange) throws Exception {
+//					System.out.println("Message History AAAA1 ");
+//
+//					Customer c = (Customer) exchange.getIn().getBody();
+//					System.out.println("Message History AAAA ");
+//					List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
+//					Object custom = exchange.getIn().getHeaders();
+//					System.out.println(c.getEmail() + " custom " + exchange.getIn().getHeaders().keySet().iterator().next());
+//					for (MessageHistory m : list){
+//						System.out.println("Message History AAAA " + m.getNode().getShortName() + ": " + m.getNode().getLabel());
+//					}
+//				}
+//				}).to("smpp://smppclient1@localhost:2775?password=password&enquireLinkTimer=3000&transactionTimer=5000&systemType=producer");
+
 //		 from("file:c:/wmpm/file")
 //			 .bean(FileAsMailAttachementBean.class, "process")
 //			 .setHeader("Subject", constant("testmail"))

@@ -100,12 +100,19 @@
 			<version>2.17.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-   			 <groupId>org.apache.camel</groupId>
-    		<artifactId>camel-mail</artifactId>
-    		<version>2.17.1</version>
-</dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-mail</artifactId>
+			<version>2.17.1</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-smpp</artifactId>
+			<version>2.17.1</version>
+			<!-- use the same version as your Camel core version -->
+		</dependency>
 	</dependencies>
 
 	<build>

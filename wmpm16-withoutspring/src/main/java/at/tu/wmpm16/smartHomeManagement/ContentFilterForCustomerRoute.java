@@ -27,12 +27,12 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	    csv.setQuoteDisabled(true);
 	    
 	    //Windows
-//		 String filePath = new String("file:c:/wmpm/file");
-//		 String filePathDropbox = new String ("c:\\wmpm\\file");
+		 String filePath = new String("file:c:/wmpm/file");
+		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
 		 //Mac
-		 String filePath = new String("file:/Users/Patrick/wmpm/file");
-		 String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
+		// String filePath = new String("file:/Users/Patrick/wmpm/file");
+		 //String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
 	    
 		 from(filePath + "?fileName=coldwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		    .unmarshal(csv)
