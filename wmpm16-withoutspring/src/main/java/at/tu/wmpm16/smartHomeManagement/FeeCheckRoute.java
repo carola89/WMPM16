@@ -8,6 +8,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 import at.tu.wmpm16.models.Customer;
+import at.tu.wmpm16.processor.WireTapLogPolling;
 
 
 
@@ -17,6 +18,9 @@ public class FeeCheckRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 	 	
+		errorHandler(deadLetterChannel("log:dead?level=ERROR")
+    			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
+		
 	 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.resultClass=at.tu.wmpm16.models.Customer&consumer.delay=3s&consumer.nativeQuery=select customer.* from customer, (select sn,s,v,location,smartmeternr,customer_id from (select sn,s,v from (SELECT sum(measuredValue) s,standardValue v,smartMeterNr sn FROM ColdWaterConsumption group by smartMeterNr,standardvalue) where s>v),smartmeter where smartmeternr = sn) where customer_id = customer.id")
 	 .process(new Processor() {
 			@SuppressWarnings("unchecked")
@@ -33,5 +37,6 @@ public class FeeCheckRoute extends RouteBuilder {
 			}).to("smpp://smppclient1@localhost:2775?password=password&enquireLinkTimer=3000&transactionTimer=5000&systemType=producer");
 
 	}
+	
 
 }

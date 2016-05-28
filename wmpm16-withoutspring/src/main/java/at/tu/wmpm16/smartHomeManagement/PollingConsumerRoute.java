@@ -35,14 +35,14 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 DataFormat bindyHc = new BindyCsvDataFormat(HeatingConsumptionCSV.class);
 		 
 		 //Windows
-		 String filePath = new String("file:c:/wmpm/file");
-		 String filePathDropbox = new String ("c:\\wmpm\\file");
+//		 String filePath = new String("file:c:/wmpm/file");
+//		 String filePathDropbox = new String ("c:\\wmpm\\file");
 
 		 //Mac
-		 //String filePath = new String("file:/Users/Patrick/wmpm/file");
-		 //String filePathDropbox = new String ("/Users/Patrick/wmpm/file");
+		 String filePath = new String("file://wmpm/file");
+		 String filePathDropbox = new String ("../wmpm/file");
 	 
-		 from("jpa://at.tu.wmpm16.models.SmartMeterConsumptions?consumeDelete=false&consumer.delay=200000&consumer.query=select c from at.tu.wmpm16.models.SmartMeterConsumptions c")
+		 from("jpa://at.tu.wmpm16.models.SmartMeterConsumptions?consumeDelete=false&consumer.delay=2m&consumer.query=select c from at.tu.wmpm16.models.SmartMeterConsumptions c")
 		 	.split().method(SplitSmartMeterConsumptionsToSingleConsumptionsBean.class, "splitBody")
 		 	.choice()
 		 		.when(body().convertToString().contains("ColdWaterConsumption"))
