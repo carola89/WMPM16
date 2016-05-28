@@ -56,7 +56,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .end();
 
 		 //Mail coldwaterconsumptionCustomer
-		 from(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 from(filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		 .bean(FileAsMailAttachementBean.class, "process")
 		 .setHeader("Subject", constant("Information mail ColdwaterConsumption"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
@@ -89,7 +89,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .end();
 		 
 		 //Mail gasconsumptionCustomer
-		 from(filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 from(filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		 .bean(FileAsMailAttachementBean.class, "process")
 		 .setHeader("Subject", constant("Information mail GasConsumption"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
@@ -122,7 +122,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .end();
 		 
 		 //Mail electricityconsumptionCustomer
-		 from(filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 from(filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		 .bean(FileAsMailAttachementBean.class, "process")
 		 .setHeader("Subject", constant("Information mail ElectricityConsumption"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
@@ -155,7 +155,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .end();
 		 
 		 //Mail heatingconsumptionCustomer
-		 from(filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 from(filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		 .bean(FileAsMailAttachementBean.class, "process")
 		 .setHeader("Subject", constant("Information mail HeatingConsumption"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
@@ -186,7 +186,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        .to(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.");
 			//Mail warmwaterconsumptionCustomer
-		 	from(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+		 	from(filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
 		 	.bean(FileAsMailAttachementBean.class, "process")
 		 	.setHeader("Subject", constant("Information mail WarmwaterConsumption"))
 		 	.setHeader("From", constant("wmpm16.10@gmail.com"))
