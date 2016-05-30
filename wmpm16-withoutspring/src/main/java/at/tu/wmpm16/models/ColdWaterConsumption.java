@@ -18,7 +18,7 @@ public class ColdWaterConsumption {
     private Date date;
     private int smartMeterNr;
 
-    protected ColdWaterConsumption() {
+    public ColdWaterConsumption() {
     }
 
     public ColdWaterConsumption(long id, long standardValue, long measuredValue, Date date, int smartMeter) {
