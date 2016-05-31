@@ -17,6 +17,7 @@ public class FeeCheckRoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
+		
 	 	
 		errorHandler(deadLetterChannel("log:dead?level=ERROR")
     			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
@@ -28,11 +29,13 @@ public class FeeCheckRoute extends RouteBuilder {
 
 				Customer c = (Customer) exchange.getIn().getBody();
 				List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
-				Object custom = exchange.getIn().getHeaders();
-				System.out.println(c.getEmail() + " custom " + exchange.getIn().getHeaders().keySet().iterator().next());
+				//Object custom = exchange.getIn().getHeaders();
+				System.out.println(c.getName() + " dfdsfds " + c.getTelNr() + " " + exchange.getIn().getHeaders().keySet().iterator().next());
 				for (MessageHistory m : list){
 					System.out.println("Message History " + m.getNode().getShortName() + ": " + m.getNode().getLabel());
 				}
+				exchange.getOut().setBody("Dear " + c.getName() + ", you have exceeded your monthly consumption limit." );
+				exchange.getOut().setHeader("CamelSmppDestAddr", c.getTelNr());;
 			}
 			}).to("smpp://smppclient1@localhost:2775?password=password&enquireLinkTimer=3000&transactionTimer=5000&systemType=producer");
 

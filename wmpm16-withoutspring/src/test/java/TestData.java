@@ -51,9 +51,9 @@ public class TestData {
 		ColdWaterConsumption c3 = new ColdWaterConsumption(50, 125, dateFormat.parse("2016-05-15"), 3);*/
 		
 		//Customer
-		Customer customer1 = new Customer(1, "Jack Bauer", "test@wmpm.com", "12345", "Schottenring 5");
-		Customer customer2 = new Customer(2, "Chloe O'Brian", "test@wmpm.com", "678943", "Schottenring 6");
-		Customer customer3 = new Customer(3, "Patrick Sommer", "test@wmpm.com", "12345", "Schottenring 7");
+		Customer customer1 = new Customer(1, "Jack Bauer", "test@wmpm.com", "+4356882145236", "Schottenring 5");
+		Customer customer2 = new Customer(2, "Chloe O'Brian", "test@wmpm.com", "+4356882145442", "Schottenring 6");
+		Customer customer3 = new Customer(3, "Patrick Sommer", "test@wmpm.com", "+435688214511", "Schottenring 7");
 		
 		List <Customer> customers = new ArrayList<Customer>();
 		customers.add(customer1);
