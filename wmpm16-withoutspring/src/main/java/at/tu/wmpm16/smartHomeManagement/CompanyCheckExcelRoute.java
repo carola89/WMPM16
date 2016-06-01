@@ -1,9 +1,16 @@
 package at.tu.wmpm16.smartHomeManagement;
 
+import java.util.List;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.MessageHistory;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 import at.tu.wmpm16.Constants;
 import at.tu.wmpm16.beans.ExcelConverterBean;
+import at.tu.wmpm16.processor.WireTapLogCheckExcel;
+import at.tu.wmpm16.processor.WireTapLogPolling;
 
 
 
@@ -21,9 +28,9 @@ public class CompanyCheckExcelRoute extends RouteBuilder {
 		 .to("jpa:at.tu.wmpm16.models.ColdWaterConsumption")
 		 .to("pdf:create")
 		 .to(Constants.filePathPdf+"?fileName=test.pdf")
+		 .wireTap("jms:checkExcelAudit")
+		 .process(new WireTapLogCheckExcel())
 		 .log("saved");
-	 
-
 	}
 	
 
