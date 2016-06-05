@@ -18,7 +18,8 @@ public class TestInsertion {
 	}
 	@Test
 	public void dataInsertedSuccessfully(){
-		System.out.println(em.createQuery("select c from ColdWaterConsumption c").getResultList().size());
+		System.out.println("ColdWaterConsumption size: "+em.createQuery("select c from ColdWaterConsumption c").getResultList().size());
+		System.out.println("ElectricityConsumption size: "+em.createQuery("select c from ElectricityConsumption c").getResultList().size());
 	}
 
 }

@@ -20,7 +20,7 @@ public class GasConsumption {
     private Date date;
     private int smartMeterNr;
 
-    protected GasConsumption() {
+    public GasConsumption() {
     }
 
     public GasConsumption(long standardValue, long measuredValue, Date date, int smartMeter) {
@@ -69,4 +69,11 @@ public class GasConsumption {
     public void setSmartMeter(int smartMeter) {
         this.smartMeterNr = smartMeter;
     }
+    
+    @Override
+	public String toString() {
+		return "GasrConsumption [id=" + id + ", standardValue="
+				+ standardValue + ", measuredValue=" + measuredValue
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
+	}
 }

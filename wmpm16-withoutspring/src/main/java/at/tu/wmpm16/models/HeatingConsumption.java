@@ -20,7 +20,7 @@ public class HeatingConsumption {
     private Date date;
     private int smartMeterNr;
 
-    protected HeatingConsumption() {
+    public HeatingConsumption() {
     }
 
     public HeatingConsumption(long standardValue, long measuredValue, Date date, int smartMeter) {
@@ -69,4 +69,11 @@ public class HeatingConsumption {
     public void setSmartMeter(int smartMeter) {
         this.smartMeterNr = smartMeter;
     }
+    
+    @Override
+	public String toString() {
+		return "HeatingConsumption [id=" + id + ", standardValue="
+				+ standardValue + ", measuredValue=" + measuredValue
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
+	}
 }
