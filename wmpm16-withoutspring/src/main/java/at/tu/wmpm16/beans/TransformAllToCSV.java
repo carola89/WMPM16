@@ -38,7 +38,7 @@ public class TransformAllToCSV {
 
 			return coll;
 		}
-		
+
 		if (object instanceof ElectricityConsumption) {
 			Collection<Object> coll = new ArrayList<Object>();
 
@@ -51,7 +51,7 @@ public class TransformAllToCSV {
 
 			return coll;
 		}
-		
+
 		if (object instanceof GasConsumption) {
 			Collection<Object> coll = new ArrayList<Object>();
 
@@ -64,7 +64,7 @@ public class TransformAllToCSV {
 
 			return coll;
 		}
-		
+
 		if (object instanceof HeatingConsumption) {
 			Collection<Object> coll = new ArrayList<Object>();
 
@@ -77,7 +77,7 @@ public class TransformAllToCSV {
 
 			return coll;
 		}
-		
+
 		if (object instanceof WarmWaterConsumption) {
 			Collection<Object> coll = new ArrayList<Object>();
 
@@ -89,8 +89,8 @@ public class TransformAllToCSV {
 			System.out.println("Transform Result: " + coll);
 			return coll;
 		}
-		
-		
+
+
 
 		return null;
 	}
@@ -108,7 +108,7 @@ public class TransformAllToCSV {
 		}
 		return null;
 	}
-	
+
 	private ElectricityConsumptionCSV mapToEcCsv(ElectricityConsumption cwc) {
 		if (null != cwc) {
 			ElectricityConsumptionCSV csv = new ElectricityConsumptionCSV();
@@ -122,7 +122,7 @@ public class TransformAllToCSV {
 		}
 		return null;
 	}
-	
+
 	private GasConsumptionCSV mapToGcCsv(GasConsumption cwc) {
 		if (null != cwc) {
 			GasConsumptionCSV csv = new GasConsumptionCSV();
@@ -136,7 +136,7 @@ public class TransformAllToCSV {
 		}
 		return null;
 	}
-	
+
 	private HeatingConsumptionCSV mapToHcCsv(HeatingConsumption cwc) {
 		if (null != cwc) {
 			HeatingConsumptionCSV csv = new HeatingConsumptionCSV();
@@ -150,7 +150,7 @@ public class TransformAllToCSV {
 		}
 		return null;
 	}
-	
+
 	private WarmWaterConsumptionCSV mapToWwcCsv(WarmWaterConsumption cwc) {
 		if (null != cwc) {
 			WarmWaterConsumptionCSV csv = new WarmWaterConsumptionCSV();

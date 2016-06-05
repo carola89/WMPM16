@@ -20,7 +20,7 @@ public class WarmWaterConsumption {
     private Date date;
     private int smartMeterNr;
 
-    protected WarmWaterConsumption() {
+    public WarmWaterConsumption() {
     }
 
     public WarmWaterConsumption(long standardValue, long measuredValue, Date date, int smartMeter) {
@@ -69,4 +69,11 @@ public class WarmWaterConsumption {
     public void setSmartMeterNr(int smartMeterNr) {
         this.smartMeterNr = smartMeterNr;
     }
+    
+    @Override
+	public String toString() {
+		return "WarmWaterConsumption [id=" + id + ", standardValue="
+				+ standardValue + ", measuredValue=" + measuredValue
+				+ ", date=" + date + ", smartMeterNr=" + smartMeterNr + "]";
+	}
 }

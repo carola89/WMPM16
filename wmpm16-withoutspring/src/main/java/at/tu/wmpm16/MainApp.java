@@ -10,6 +10,7 @@ import org.apache.camel.main.Main;
 import at.tu.wmpm16.smartHomeManagement.CompanyCheckExcelRoute;
 import at.tu.wmpm16.smartHomeManagement.ContentFilterForCustomerRoute;
 import at.tu.wmpm16.smartHomeManagement.FeeCheckRoute;
+import at.tu.wmpm16.smartHomeManagement.GetEmailBackForChangeRoute;
 import at.tu.wmpm16.smartHomeManagement.InformingDisordersRoute;
 import at.tu.wmpm16.smartHomeManagement.PollingConsumerRoute;
 
@@ -38,9 +39,9 @@ public class MainApp {
         main.addRouteBuilder(new ContentFilterForCustomerRoute());
         main.addRouteBuilder(new InformingDisordersRoute());
         main.addRouteBuilder(new CompanyCheckExcelRoute());
-        main.addRouteBuilder(new MyRouteBuilder());
+        main.addRouteBuilder(new GetEmailBackForChangeRoute());
         main.run(args);
     }
-
+    
 }
 
