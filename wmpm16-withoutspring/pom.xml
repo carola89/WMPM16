@@ -125,6 +125,17 @@
 			<artifactId>camel-pdf</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-ftp</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.mockftpserver</groupId> -->
+		<!-- <artifactId>MockFtpServer</artifactId> -->
+		<!-- <version>2.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>

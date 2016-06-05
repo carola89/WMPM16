@@ -44,8 +44,10 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        }).marshal(csv)
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
+			.setHeader("CamelFileName" , simple("coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
+			.wireTap("ftp://speedtest.tele2.net/upload/")
 	        .end();
 
 		 //Mail coldwaterconsumptionCustomer
@@ -77,8 +79,10 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        }).marshal(csv)
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
+			.setHeader("CamelFileName" , simple("gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
+			.wireTap("ftp://speedtest.tele2.net/upload/")
 	        .end();
 		 
 		 //Mail gasconsumptionCustomer
@@ -110,8 +114,10 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        }).marshal(csv)
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
+			.setHeader("CamelFileName" , simple("electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
+			.wireTap("ftp://speedtest.tele2.net/upload/")
 	        .end();
 		 
 		 //Mail electricityconsumptionCustomer
@@ -143,7 +149,9 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        }).marshal(csv)
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
+			.setHeader("CamelFileName" , simple("heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+			.wireTap("ftp://speedtest.tele2.net/upload/")
 	        .log("done.")
 	        .end();
 		 
@@ -176,7 +184,9 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 	        }).marshal(csv)
 	        .wireTap("jms:filteringAudit")
 			.process(new WireTapLogContentFilter())
+			.setHeader("CamelFileName" , simple("warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
+			.wireTap("ftp://speedtest.tele2.net/upload/")
 	        .log("done.");
 			//Mail warmwaterconsumptionCustomer
 		 	from(Constants.filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")
@@ -187,12 +197,12 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 	//.to("velocity://mail-templates/mail.vm")
 		 	.to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
 		 	.log("Email done warmwaterconsumptionCustomer")
+		 	.log("BEGINNING DROPBOX")
 	        .to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + Constants.filePathDropbox + "&remotePath=/consumptions")
 			.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
 	        .end();
-		
 	}
-	}
+}
 	
 	
 

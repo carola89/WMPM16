@@ -8,12 +8,12 @@ import org.apache.camel.builder.RouteBuilder;
  */
 public class MyRouteBuilder extends RouteBuilder {
 
-    /**
-     * Let's configure the Camel routing rules using Java code...
-     */
-    public void configure() {
-    	
-    	errorHandler(deadLetterChannel("log:dead?level=ERROR")
+	/**
+	 * Let's configure the Camel routing rules using Java code...
+	 */
+	public void configure() {
+
+		/*errorHandler(deadLetterChannel("log:dead?level=ERROR")
     			.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
 
         // here is a sample which processes the input files
@@ -27,6 +27,14 @@ public class MyRouteBuilder extends RouteBuilder {
                 .otherwise()
                     .log("Other message")
                     .to("file:target/messages/others");
-    }
+    }**/
+
+
+		from("file:target/upload?moveFailed=../error")
+		.log("Uploading file ${file:name}")
+		.wireTap("ftp://speedtest.tele2.net/upload/")
+		.log("Uploaded file ${file:name} complete.");
+
+	}
 
 }

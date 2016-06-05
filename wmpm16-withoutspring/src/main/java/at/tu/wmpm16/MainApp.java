@@ -38,10 +38,9 @@ public class MainApp {
         main.addRouteBuilder(new ContentFilterForCustomerRoute());
         main.addRouteBuilder(new InformingDisordersRoute());
         main.addRouteBuilder(new CompanyCheckExcelRoute());
+        main.addRouteBuilder(new MyRouteBuilder());
         main.run(args);
     }
-    
-    
 
 }
 

@@ -35,16 +35,16 @@ public class TestData {
 	public void insertData() throws ParseException{
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-mm-DD");
-
-
+		int deletedCount = em.createQuery("DELETE FROM SmartMeterConsumptions").executeUpdate();
+		System.out.println("deleted " + deletedCount);
 		SmartMeterConsumptions data1 = new SmartMeterConsumptions(1, 1, dateFormat.parse("2016-05-13"), 100, 0, 0, 0, 0); 
-		SmartMeterConsumptions data2 = new SmartMeterConsumptions(2, 1, dateFormat.parse("2016-05-14"), 50, 0, 0, 0, 0);
-		SmartMeterConsumptions data3 = new SmartMeterConsumptions(3, 1, dateFormat.parse("2016-05-15"), 50, 0, 0, 0, 0); 
-		SmartMeterConsumptions data4 = new SmartMeterConsumptions(4, 4, dateFormat.parse("2016-05-16"), 50, 0, 0, 0, 0); 
-		SmartMeterConsumptions data5 = new SmartMeterConsumptions(5, 5, dateFormat.parse("2016-05-17"), 50, 0, 0, 0, 0); 
-		SmartMeterConsumptions data6 = new SmartMeterConsumptions(6, 6, dateFormat.parse("2016-05-18"), 50, 0, 0, 0, 0); 
-		
-		
+//		SmartMeterConsumptions data2 = new SmartMeterConsumptions(2, 1, dateFormat.parse("2016-05-14"), 50, 0, 0, 0, 0);
+//		SmartMeterConsumptions data3 = new SmartMeterConsumptions(3, 1, dateFormat.parse("2016-05-15"), 50, 0, 0, 0, 0); 
+//		SmartMeterConsumptions data4 = new SmartMeterConsumptions(4, 4, dateFormat.parse("2016-05-16"), 50, 0, 0, 0, 0); 
+//		SmartMeterConsumptions data5 = new SmartMeterConsumptions(5, 5, dateFormat.parse("2016-05-17"), 50, 0, 0, 0, 0); 
+//		SmartMeterConsumptions data6 = new SmartMeterConsumptions(6, 6, dateFormat.parse("2016-05-18"), 50, 0, 0, 0, 0); 
+//		
+//		
 		//ColdWaterConsumption
 		/*ColdWaterConsumption c1 = new ColdWaterConsumption(100, 50, dateFormat.parse("2016-05-13"), 1);
 		ColdWaterConsumption c2 = new ColdWaterConsumption(100, 124, dateFormat.parse("2016-05-14"), 1);
@@ -86,12 +86,12 @@ public class TestData {
 		//ElectricityConsumption
 		
 		em.merge(data1);
-		em.merge(data2);
-		em.merge(data3);
-		em.merge(data4);
-		em.merge(data5);
-		em.merge(data6);
-		
+//		em.merge(data2);
+//		em.merge(data3);
+//		em.merge(data4);
+//		em.merge(data5);
+//		em.merge(data6);
+//		
 		em.persist(customer1);
 		em.persist(customer2);
 		em.persist(customer3);
