@@ -22,30 +22,35 @@ public class ChangeMailProcessor implements Processor{
 
 		Map<String, DataHandler> attachments = exchange.getIn().getAttachments();
 		
-//		logger.info("After reading attachments....");
+		System.out.println(exchange.getIn().getHeader("From"));
+		System.out.println(exchange.getIn().getHeader("Subject"));
+		System.out.println(exchange.getIn().getBody());
+		
+		logger.info("After reading attachments....");
 		if (attachments.size() > 0) {
-			System.out.println("In if hinein" + attachments.size());
+			System.out.println("In if hinein " + attachments.size());
 			for (String name : attachments.keySet()) {
-//				System.out.println("In for hinein");
-				DataHandler dh = attachments.get(name);
-//				System.out.println("DataHandler geted");
+
+//				DataHandler dh = attachments.get(name);
+//				System.out.println("DataHandler geted " + dh.toString());
 				// get the file name
-				String filename = dh.getName();
-				System.out.println(filename);
+//				String filename = dh.getName();
+				System.out.println(name);
+//
+//				// get the content and convert it to byte[]
+//				byte[] data = exchange.getContext().getTypeConverter()
+//						.convertTo(byte[].class, dh.getInputStream());
+//
+//				// write the data to a file
+//				File file = new File("c:/wmpm/file/"+filename);
+//				FileOutputStream out = new FileOutputStream(file);
+//				out.write(data);
+//				out.flush();
+//				out.close();
 
-				// get the content and convert it to byte[]
-				byte[] data = exchange.getContext().getTypeConverter()
-						.convertTo(byte[].class, dh.getInputStream());
-
-				// write the data to a file
-				File file = new File("c:/wmpm/file/"+filename);
-				FileOutputStream out = new FileOutputStream(file);
-				out.write(data);
-				out.flush();
-				out.close();
-
-				logger.info("MailProcessor complete");   
+				 
 			}
 		}
+		logger.info("MailProcessor complete");  
 	}
 }
