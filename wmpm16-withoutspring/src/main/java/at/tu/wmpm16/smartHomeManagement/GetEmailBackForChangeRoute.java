@@ -34,7 +34,7 @@ public class GetEmailBackForChangeRoute extends RouteBuilder{
 		//		from("imaps://imap.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&searchTerm.from=mmiheller@gmail.com&consumer.delay=1000&delete=false&unseen=true")
 		//Speicherung funktioniert noch nicht
 		
-		from("imaps://imap.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&consumer.delay=1000&delete=false&unseen=true")
+		from("imaps://imap.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&consumer.delay=1000&delete=false&unseen=true&searchTerm.from=mmiheller@gmail.com")
 		//.process(new ChangeMailProcessor())
 		.split().method(SplitAttachementsBean.class, "splittAttachments")
 		.log("Body: "+body().convertToString())
