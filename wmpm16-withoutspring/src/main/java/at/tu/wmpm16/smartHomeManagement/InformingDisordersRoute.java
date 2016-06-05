@@ -21,7 +21,7 @@ public class InformingDisordersRoute  extends RouteBuilder {
     			.useOriginalMessage().maximumRedeliveries(5).redeliveryDelay(5000));
 		
 		
-		from("file://wmpm?fileName=disorder.rtf&noop=true")
+		from("file://../wmpm?fileName=disorder.rtf&noop=true")
 		 .bean(FileAsMailAttachementBean.class, "process")
 		 .setHeader("Subject", constant("Information mail about Disorder"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))

@@ -12,6 +12,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
 
+import at.tu.wmpm16.Constants;
 import at.tu.wmpm16.beans.SplitAttachementsBean;
 import at.tu.wmpm16.processor.ChangeMailProcessor;
 import at.tu.wmpm16.processor.ColdWaterConsumptionMailToDbProcessor;
@@ -93,31 +94,31 @@ public class GetEmailBackForChangeRoute extends RouteBuilder{
 		.process(new WireTapLogMail());
 		
 		
-		from("file://wmpm/back?fileName=coldwaterconsumption.csv&noop=true")
+		from(Constants.filePathBack+"?fileName=coldwaterconsumption.csv&noop=true")
 		   .unmarshal(csv)
 		   .convertBodyTo(List.class)
 		   .log("unmarshal CWC")
 		      .process(new ColdWaterConsumptionMailToDbProcessor()).end();
 		
-		from("file://wmpm/back?fileName=warmwaterconsumption.csv&noop=true")
+		from(Constants.filePathBack+"?fileName=warmwaterconsumption.csv&noop=true")
 		   .unmarshal(csv)
 		   .convertBodyTo(List.class)
 		   .log("unmarshal WWC")
 		      .process(new WarmWaterConsumptionMailToDbProcessor()).end();
 		
-		from("file://wmpm/back?fileName=electricityconsumption.csv&noop=true")
+		from(Constants.filePathBack+"?fileName=electricityconsumption.csv&noop=true")
 		   .unmarshal(csv)
 		   .convertBodyTo(List.class)
 		   .log("unmarshal EC")
 		      .process(new ElectricityConsumptionMailToDbProcessor()).end();
 		
-		from("file://wmpm/back?fileName=gasconsumption.csv&noop=true")
+		from(Constants.filePathBack+"?fileName=gasconsumption.csv&noop=true")
 		   .unmarshal(csv)
 		   .convertBodyTo(List.class)
 		   .log("unmarshal GC")
 		      .process(new GasConsumptionMailToDbProcessor()).end();
 		
-		from("file://wmpm/back?fileName=heatingconsumption.csv&noop=true")
+		from(Constants.filePathBack+"?fileName=heatingconsumption.csv&noop=true")
 		   .unmarshal(csv)
 		   .convertBodyTo(List.class)
 		   .log("unmarshal HC")

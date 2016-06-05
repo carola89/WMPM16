@@ -7,5 +7,6 @@ public class Constants {
 	public static String filePathDropbox = "../wmpm/file";
 	public static String filePathExcel = "file:../wmpm/file-excel";
 	public static String filePathPdf = "file:../wmpm/file-pdf";
+	public static String filePathBack = "file:../wmpm/back"; // for read from mail and save back to db
 	
 }
