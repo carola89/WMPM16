@@ -1,0 +1,909 @@
+2016.05.22 18:39:38 39  INFO    1 ==============================================================
+2016.05.22 18:39:38 296 INFO    1 =  SMPPSim Copyright (C) 2006 Selenium Software Ltd
+2016.05.22 18:39:38 296 INFO    1 =  SMPPSim comes with ABSOLUTELY NO WARRANTY; for details
+2016.05.22 18:39:38 297 INFO    1 =  read the license.txt file that was included in the SMPPSim distribution
+2016.05.22 18:39:38 297 INFO    1 =  This is free software, and you are welcome to redistribute it under
+2016.05.22 18:39:38 297 INFO    1 =  certain conditions; Again, see license.txt for details or read the GNU
+2016.05.22 18:39:38 297 INFO    1 =  GPL license at http://www.gnu.org/licenses/gpl.html
+2016.05.22 18:39:38 298 INFO    1 =  ...... end of legal stuff ......
+2016.05.22 18:39:38 298 INFO    1 ==============================================================
+2016.05.22 18:39:38 298 INFO    1 =  
+2016.05.22 18:39:38 298 INFO    1 =  com.seleniumsoftware.SMPPSim 2.6.11
+2016.05.22 18:39:38 299 INFO    1 =  by Martin Woolley (martin@seleniumsoftware.com)
+2016.05.22 18:39:38 299 INFO    1 =  http://www.seleniumsoftware.com
+2016.05.22 18:39:38 300 INFO    1 =  Running with the following parameters:
+2016.05.22 18:39:38 300 INFO    1 =  SMPP_PORT                               :2775
+2016.05.22 18:39:38 300 INFO    1 =  SMPP_CONNECTION_HANDLERS                :10
+2016.05.22 18:39:38 301 INFO    1 =  CONNECTION_HANDLER_CLASS                :com.seleniumsoftware.SMPPSim.StandardConnectionHandler
+2016.05.22 18:39:38 301 INFO    1 =  PROTOCOL_HANDLER_CLASS                  :com.seleniumsoftware.SMPPSim.StandardProtocolHandler
+2016.05.22 18:39:38 302 INFO    1 =  LIFE_CYCLE_MANAGER                      :com.seleniumsoftware.SMPPSim.LifeCycleManager
+2016.05.22 18:39:38 303 INFO    1 =  SMPP_CONNECTION_HANDLERS                :10
+2016.05.22 18:39:38 303 INFO    1 =  INBOUND_QUEUE_CAPACITY                  :1000
+2016.05.22 18:39:38 304 INFO    1 =  OUTBOUND_QUEUE_CAPACITY                 :1000
+2016.05.22 18:39:38 304 INFO    1 =  MESSAGE_STATE_CHECK_FREQUENCY           :5000
+2016.05.22 18:39:38 305 INFO    1 =  MAX_TIME_ENROUTE                        :10000
+2016.05.22 18:39:38 307 INFO    1 =  PERCENTAGE_THAT_TRANSITION              :75
+2016.05.22 18:39:38 307 INFO    1 =  PERCENTAGE_DELIVERED                    :90
+2016.05.22 18:39:38 308 INFO    1 =  PERCENTAGE_UNDELIVERABLE                :6
+2016.05.22 18:39:38 308 INFO    1 =  PERCENTAGE_ACCEPTED                     :2
+2016.05.22 18:39:38 308 INFO    1 =  PERCENTAGE_REJECTED                     :2
+2016.05.22 18:39:38 309 INFO    1 =  DISCARD_FROM_QUEUE_AFTER                :60000
+2016.05.22 18:39:38 309 INFO    1 =  OUTBIND_ENABLED                         :false
+2016.05.22 18:39:38 311 INFO    1 =  OUTBIND_ESME_IP_ADDRESS                 :null
+2016.05.22 18:39:38 312 INFO    1 =  OUTBIND_ESME_PORT		                :0
+2016.05.22 18:39:38 312 INFO    1 =  OUTBIND_ESME_PASSWORD                   :password
+2016.05.22 18:39:38 312 INFO    1 =  HTTP_PORT                               :88
+2016.05.22 18:39:38 313 INFO    1 =  HTTP_THREADS                            :1
+2016.05.22 18:39:38 313 INFO    1 =  DOCROOT                                 :www
+2016.05.22 18:39:38 314 INFO    1 =  AUTHORISED_FILES                        :/css/style.css,/index.htm,/inject_mo.htm,/favicon.ico,/images/logo.gif,/images/dots.gif,/user-guide.htm,/images/homepage.gif,/images/inject_mo.gif
+2016.05.22 18:39:38 314 INFO    1 =  INJECT_MO_PAGE                          :/inject_mo.htm
+2016.05.22 18:39:38 315 INFO    1 =  SMSCID                                  :SMPPSim
+2016.05.22 18:39:38 315 INFO    1 =  DELIVERY_MESSAGES_PER_MINUTE            :0
+2016.05.22 18:39:38 316 INFO    1 =  DELIVER_MESSAGES_FILE                   :N/A
+2016.05.22 18:39:38 316 INFO    1 =  LOOPBACK                                :false
+2016.05.22 18:39:38 317 INFO    1 =  CAPTURE_REQUESTS_BINARY                 :false
+2016.05.22 18:39:38 317 INFO    1 =  CAPTURE_REQUESTS_BINARY_TO_FILE         :sme_binary.capture
+2016.05.22 18:39:38 318 INFO    1 =  CAPTURE_RESPONSES_BINARY                :false
+2016.05.22 18:39:38 318 INFO    1 =  CAPTURE_RESPONSES_BINARY_TO_FILE        :smppsim_binary.capture
+2016.05.22 18:39:38 319 INFO    1 =  CAPTURE_REQUESTS_DECODED                :false
+2016.05.22 18:39:38 319 INFO    1 =  CAPTURE_REQUESTS_DECODED_TO_FILE        :sme_decoded.capture
+2016.05.22 18:39:38 320 INFO    1 =  CAPTURE_RESPONSES_DECODED               :false
+2016.05.22 18:39:38 320 INFO    1 =  CAPTURE_RESPONSES_DECODED_TO_FILE       :smppsim_decoded.capture
+2016.05.22 18:39:38 320 INFO    1 =  CALLBACK                                :false
+2016.05.22 18:39:38 322 INFO    1 = Delivery receipts will always have optional parameter with TLV=5123/10/34343132333435363738
+2016.05.22 18:39:38 322 INFO    1 = Delivery receipts will include standard optional parameters if client supports 3.4 or later
+2016.05.22 18:39:38 322 INFO    1 =  
+2016.05.22 18:39:38 323 INFO    1 ==============================================================
+2016.05.22 18:39:38 342 INFO    12 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 342 INFO    13 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 342 INFO    15 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 342 INFO    14 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    16 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    19 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    20 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    21 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    18 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 346 INFO    22 Starting HttpHandler thread. Listening on port 88 for connections
+2016.05.22 18:39:38 347 INFO    23 Starting InboundQueue service....
+2016.05.22 18:39:38 347 INFO    24 Starting Lifecycle Service (OutboundQueue)
+2016.05.22 18:39:38 348 INFO    24 Lifecycle Service: OutboundQueue is empty  - waiting
+2016.05.22 18:39:38 349 INFO    17 StandardConnectionHandler waiting for connection
+2016.05.22 18:39:38 351 INFO    23 InboundQueue: empty  - waiting
+2016.05.22 18:39:38 351 INFO    26 Starting DelayedInboundQueue service....
+2016.05.22 18:40:38 350 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:41:38 347 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:42:38 344 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:43:39 480 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:44:39 477 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:45:39 474 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:46:39 471 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:47:39 469 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:48:39 466 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:49:39 463 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:50:39 460 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:51:39 457 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:52:39 454 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:53:39 451 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:54:39 707 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:55:34 96  INFO    12 StandardConnectionHandler accepted a connection
+2016.05.22 18:55:34 106 INFO    12 Protocol handler is of type StandardProtocolHandler
+2016.05.22 18:55:34 107 INFO    12 : BIND_TRANSMITTER:
+2016.05.22 18:55:34 108 INFO    12 Hex dump (49) bytes:
+2016.05.22 18:55:34 109 INFO    12 00000031:00000002:00000000:00000001:
+2016.05.22 18:55:34 109 INFO    12 736D7070:636C6965:6E740070:61737377:
+2016.05.22 18:55:34 109 INFO    12 6F726400:70726F64:75636572:00340000:
+2016.05.22 18:55:34 110 INFO    12 00
+2016.05.22 18:55:34 111 INFO    12 cmd_len=49,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient
+2016.05.22 18:55:34 111 INFO    12 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 18:55:34 112 INFO    12 addr_npi=0,address_range=
+2016.05.22 18:55:34 112 INFO    12  
+2016.05.22 18:55:34 113 WARNING 12 Bind failed authentication check.
+2016.05.22 18:55:34 113 INFO    12 : BIND_TRANSMITTER_RESP:
+2016.05.22 18:55:34 113 INFO    12 Hex dump (16) bytes:
+2016.05.22 18:55:34 114 INFO    12 00000010:80000002:0000000F:00000001:
+2016.05.22 18:55:34 114 INFO    12 
+2016.05.22 18:55:34 115 INFO    12 cmd_len=16,cmd_id=-2147483646,cmd_status=15,seq_no=1,system_id=SMPPSim
+2016.05.22 18:55:34 115 INFO    12  
+2016.05.22 18:55:34 116 INFO    12 StandardConnectionHandler waiting for connection
+2016.05.22 18:55:39 704 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:56:39 701 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:57:39 698 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:58:39 695 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 18:59:39 692 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:00:39 689 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:01:37 94  INFO    17 StandardConnectionHandler accepted a connection
+2016.05.22 19:01:37 95  INFO    17 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:01:37 103 INFO    17 : BIND_TRANSMITTER:
+2016.05.22 19:01:37 104 INFO    17 Hex dump (49) bytes:
+2016.05.22 19:01:37 104 INFO    17 00000031:00000002:00000000:00000001:
+2016.05.22 19:01:37 105 INFO    17 736D7070:636C6965:6E740070:61737377:
+2016.05.22 19:01:37 106 INFO    17 6F726400:70726F64:75636572:00340000:
+2016.05.22 19:01:37 106 INFO    17 00
+2016.05.22 19:01:37 106 INFO    17 cmd_len=49,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient
+2016.05.22 19:01:37 107 INFO    17 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:01:37 107 INFO    17 addr_npi=0,address_range=
+2016.05.22 19:01:37 108 INFO    17  
+2016.05.22 19:01:37 109 WARNING 17 Bind failed authentication check.
+2016.05.22 19:01:37 110 INFO    17 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:01:37 111 INFO    17 Hex dump (16) bytes:
+2016.05.22 19:01:37 112 INFO    17 00000010:80000002:0000000F:00000001:
+2016.05.22 19:01:37 112 INFO    17 
+2016.05.22 19:01:37 113 INFO    17 cmd_len=16,cmd_id=-2147483646,cmd_status=15,seq_no=1,system_id=SMPPSim
+2016.05.22 19:01:37 113 INFO    17  
+2016.05.22 19:01:37 126 INFO    17 StandardConnectionHandler waiting for connection
+2016.05.22 19:01:39 686 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:02:39 683 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:03:39 680 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:04:39 677 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:04:47 211 INFO    19 StandardConnectionHandler accepted a connection
+2016.05.22 19:04:47 211 INFO    19 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:04:47 219 INFO    19 : BIND_TRANSMITTER:
+2016.05.22 19:04:47 219 INFO    19 Hex dump (50) bytes:
+2016.05.22 19:04:47 220 INFO    19 00000032:00000002:00000000:00000001:
+2016.05.22 19:04:47 220 INFO    19 736D7070:636C6965:6E743100:70617373:
+2016.05.22 19:04:47 221 INFO    19 776F7264:0070726F:64756365:72003400:
+2016.05.22 19:04:47 221 INFO    19 0000
+2016.05.22 19:04:47 222 INFO    19 cmd_len=50,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient1
+2016.05.22 19:04:47 222 INFO    19 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:04:47 223 INFO    19 addr_npi=0,address_range=
+2016.05.22 19:04:47 223 INFO    19  
+2016.05.22 19:04:47 224 INFO    19 New transmitter session bound to SMPPSim
+2016.05.22 19:04:47 224 INFO    19 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:04:47 225 INFO    19 Hex dump (24) bytes:
+2016.05.22 19:04:47 225 INFO    19 00000018:80000002:00000000:00000001:
+2016.05.22 19:04:47 227 INFO    19 534D5050:53696D00:
+2016.05.22 19:04:47 227 INFO    19 cmd_len=0,cmd_id=-2147483646,cmd_status=0,seq_no=1,system_id=SMPPSim
+2016.05.22 19:04:47 228 INFO    19  
+2016.05.22 19:04:49 463 INFO    19 : Standard SUBMIT_SM:
+2016.05.22 19:04:49 463 INFO    19 Hex dump (155) bytes:
+2016.05.22 19:04:49 464 INFO    19 0000009B:00000004:00000000:00000002:
+2016.05.22 19:04:49 465 INFO    19 434D5400:00003136:31360000:00313731:
+2016.05.22 19:04:49 465 INFO    19 37000000:01000001:0000006F:43757374:
+2016.05.22 19:04:49 465 INFO    19 6F6D6572:7B69643D:342C2063:7573746F:
+2016.05.22 19:04:49 466 INFO    19 6D65724E:523D312C:206E616D:653D274A:
+2016.05.22 19:04:49 466 INFO    19 61636B20:42617565:72272C20:656D6169:
+2016.05.22 19:04:49 467 INFO    19 6C3D2774:65737440:776D706D:2E636F6D:
+2016.05.22 19:04:49 467 INFO    19 272C2074:656C4E72:3D273132:33343527:
+2016.05.22 19:04:49 468 INFO    19 2C206164:64726573:733D2753:63686F74:
+2016.05.22 19:04:49 468 INFO    19 74656E72:696E6720:35277D
+2016.05.22 19:04:49 469 INFO    19 cmd_len=155,cmd_id=4,cmd_status=0,seq_no=2,service_type=CMT,source_addr_ton=0
+2016.05.22 19:04:49 469 INFO    19 source_addr_npi=0,source_addr=1616,dest_addr_ton=0,dest_addr_npi=0
+2016.05.22 19:04:49 470 INFO    19 dest_addr=1717,esm_class=0,protocol_ID=0,priority_flag=1
+2016.05.22 19:04:49 470 INFO    19 schedule_delivery_time=,validity_period=,registered_delivery_flag=1
+2016.05.22 19:04:49 471 INFO    19 replace_if_present_flag=0,data_coding=0,sm_default_msg_id=0,sm_length=111
+2016.05.22 19:04:49 472 INFO    19 short_message=Customer{id=4, customerNR=1, name='Jack Bauer'
+2016.05.22 19:04:49 472 INFO    19  email='test@wmpm.com', telNr='12345', address='Schottenring 5'}
+2016.05.22 19:04:49 473 INFO    19  
+2016.05.22 19:04:49 475 INFO    19 Validity period is not set: defaulting to 5 minutes from now
+2016.05.22 19:04:49 479 INFO    19 Generated default validity period=160522190949000+
+2016.05.22 19:04:49 481 INFO    19 :SUBMIT_SM_RESP:
+2016.05.22 19:04:49 481 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:04:49 481 INFO    19 Hex dump (18) bytes:
+2016.05.22 19:04:49 482 INFO    19 00000012:80000004:00000000:00000002:
+2016.05.22 19:04:49 483 INFO    19 3000
+2016.05.22 19:04:49 483 INFO    19 cmd_len=0,cmd_id=-2147483644,cmd_status=0,seq_no=2,message_id=0
+2016.05.22 19:04:49 484 INFO    19  
+2016.05.22 19:04:49 484 INFO    19 SubmitSM processing - response written to connection
+2016.05.22 19:04:52 486 INFO    19 : ENQUIRE_LINK:
+2016.05.22 19:04:52 486 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:52 486 INFO    19 00000010:00000015:00000000:00000003:
+2016.05.22 19:04:52 486 INFO    19 
+2016.05.22 19:04:52 487 INFO    19 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=3
+2016.05.22 19:04:52 487 INFO    19  
+2016.05.22 19:04:52 487 INFO    19 :ENQUIRE_LINK_RESP:
+2016.05.22 19:04:52 487 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:52 487 INFO    19 00000010:80000015:00000000:00000003:
+2016.05.22 19:04:52 488 INFO    19 
+2016.05.22 19:04:52 488 INFO    19 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=3
+2016.05.22 19:04:52 488 INFO    19  
+2016.05.22 19:04:54 481 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:04:55 488 INFO    19 : ENQUIRE_LINK:
+2016.05.22 19:04:55 488 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:55 488 INFO    19 00000010:00000015:00000000:00000004:
+2016.05.22 19:04:55 488 INFO    19 
+2016.05.22 19:04:55 489 INFO    19 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=4
+2016.05.22 19:04:55 489 INFO    19  
+2016.05.22 19:04:55 489 INFO    19 :ENQUIRE_LINK_RESP:
+2016.05.22 19:04:55 489 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:55 489 INFO    19 00000010:80000015:00000000:00000004:
+2016.05.22 19:04:55 489 INFO    19 
+2016.05.22 19:04:55 489 INFO    19 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=4
+2016.05.22 19:04:55 490 INFO    19  
+2016.05.22 19:04:58 490 INFO    19 : ENQUIRE_LINK:
+2016.05.22 19:04:58 490 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:58 490 INFO    19 00000010:00000015:00000000:00000005:
+2016.05.22 19:04:58 491 INFO    19 
+2016.05.22 19:04:58 491 INFO    19 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=5
+2016.05.22 19:04:58 491 INFO    19  
+2016.05.22 19:04:58 491 INFO    19 :ENQUIRE_LINK_RESP:
+2016.05.22 19:04:58 491 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:04:58 491 INFO    19 00000010:80000015:00000000:00000005:
+2016.05.22 19:04:58 492 INFO    19 
+2016.05.22 19:04:58 492 INFO    19 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=5
+2016.05.22 19:04:58 492 INFO    19  
+2016.05.22 19:04:59 481 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:04:59 481 INFO    24 Message:2 state=DELIVERED
+2016.05.22 19:04:59 481 INFO    24 Delivery Receipt requested
+2016.05.22 19:04:59 484 INFO    23 InboundQueue: no available receiver sessions - moving message(s) to pending queue
+2016.05.22 19:04:59 484 INFO    23 Moved 1 MO messages to the pending queue
+2016.05.22 19:05:01 492 INFO    19 : ENQUIRE_LINK:
+2016.05.22 19:05:01 492 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:05:01 492 INFO    19 00000010:00000015:00000000:00000006:
+2016.05.22 19:05:01 492 INFO    19 
+2016.05.22 19:05:01 493 INFO    19 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=6
+2016.05.22 19:05:01 493 INFO    19  
+2016.05.22 19:05:01 493 INFO    19 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:01 493 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:05:01 493 INFO    19 00000010:80000015:00000000:00000006:
+2016.05.22 19:05:01 493 INFO    19 
+2016.05.22 19:05:01 493 INFO    19 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=6
+2016.05.22 19:05:01 494 INFO    19  
+2016.05.22 19:05:04 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:05:04 494 INFO    19 : ENQUIRE_LINK:
+2016.05.22 19:05:04 494 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:05:04 494 INFO    19 00000010:00000015:00000000:00000007:
+2016.05.22 19:05:04 495 INFO    19 
+2016.05.22 19:05:04 498 INFO    19 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=7
+2016.05.22 19:05:04 502 INFO    19  
+2016.05.22 19:05:04 502 INFO    19 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:04 502 INFO    19 Hex dump (16) bytes:
+2016.05.22 19:05:04 502 INFO    19 00000010:80000015:00000000:00000007:
+2016.05.22 19:05:04 503 INFO    19 
+2016.05.22 19:05:04 505 INFO    19 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=7
+2016.05.22 19:05:04 505 INFO    19  
+2016.05.22 19:05:06 998 INFO    19 Socket exception: probably connection closed by client without UNBIND
+2016.05.22 19:05:07 0   INFO    19 StandardConnectionHandler waiting for connection
+2016.05.22 19:05:09 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:05:14 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:05:19 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:05:21 115 INFO    20 StandardConnectionHandler accepted a connection
+2016.05.22 19:05:21 115 INFO    20 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:05:21 122 INFO    20 : BIND_TRANSMITTER:
+2016.05.22 19:05:21 122 INFO    20 Hex dump (50) bytes:
+2016.05.22 19:05:21 123 INFO    20 00000032:00000002:00000000:00000001:
+2016.05.22 19:05:21 123 INFO    20 736D7070:636C6965:6E743100:70617373:
+2016.05.22 19:05:21 123 INFO    20 776F7264:0070726F:64756365:72003400:
+2016.05.22 19:05:21 123 INFO    20 0000
+2016.05.22 19:05:21 123 INFO    20 cmd_len=50,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient1
+2016.05.22 19:05:21 123 INFO    20 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:05:21 124 INFO    20 addr_npi=0,address_range=
+2016.05.22 19:05:21 124 INFO    20  
+2016.05.22 19:05:21 124 INFO    20 New transmitter session bound to SMPPSim
+2016.05.22 19:05:21 124 INFO    20 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:05:21 124 INFO    20 Hex dump (24) bytes:
+2016.05.22 19:05:21 124 INFO    20 00000018:80000002:00000000:00000001:
+2016.05.22 19:05:21 124 INFO    20 534D5050:53696D00:
+2016.05.22 19:05:21 124 INFO    20 cmd_len=0,cmd_id=-2147483646,cmd_status=0,seq_no=1,system_id=SMPPSim
+2016.05.22 19:05:21 125 INFO    20  
+2016.05.22 19:05:23 273 INFO    20 : Standard SUBMIT_SM:
+2016.05.22 19:05:23 273 INFO    20 Hex dump (155) bytes:
+2016.05.22 19:05:23 273 INFO    20 0000009B:00000004:00000000:00000002:
+2016.05.22 19:05:23 273 INFO    20 434D5400:00003136:31360000:00313731:
+2016.05.22 19:05:23 273 INFO    20 37000000:01000001:0000006F:43757374:
+2016.05.22 19:05:23 273 INFO    20 6F6D6572:7B69643D:342C2063:7573746F:
+2016.05.22 19:05:23 273 INFO    20 6D65724E:523D312C:206E616D:653D274A:
+2016.05.22 19:05:23 274 INFO    20 61636B20:42617565:72272C20:656D6169:
+2016.05.22 19:05:23 274 INFO    20 6C3D2774:65737440:776D706D:2E636F6D:
+2016.05.22 19:05:23 274 INFO    20 272C2074:656C4E72:3D273132:33343527:
+2016.05.22 19:05:23 274 INFO    20 2C206164:64726573:733D2753:63686F74:
+2016.05.22 19:05:23 274 INFO    20 74656E72:696E6720:35277D
+2016.05.22 19:05:23 274 INFO    20 cmd_len=155,cmd_id=4,cmd_status=0,seq_no=2,service_type=CMT,source_addr_ton=0
+2016.05.22 19:05:23 275 INFO    20 source_addr_npi=0,source_addr=1616,dest_addr_ton=0,dest_addr_npi=0
+2016.05.22 19:05:23 275 INFO    20 dest_addr=1717,esm_class=0,protocol_ID=0,priority_flag=1
+2016.05.22 19:05:23 275 INFO    20 schedule_delivery_time=,validity_period=,registered_delivery_flag=1
+2016.05.22 19:05:23 275 INFO    20 replace_if_present_flag=0,data_coding=0,sm_default_msg_id=0,sm_length=111
+2016.05.22 19:05:23 275 INFO    20 short_message=Customer{id=4, customerNR=1, name='Jack Bauer'
+2016.05.22 19:05:23 275 INFO    20  email='test@wmpm.com', telNr='12345', address='Schottenring 5'}
+2016.05.22 19:05:23 276 INFO    20  
+2016.05.22 19:05:23 276 INFO    20 Validity period is not set: defaulting to 5 minutes from now
+2016.05.22 19:05:23 276 INFO    20 Generated default validity period=160522191023000+
+2016.05.22 19:05:23 276 INFO    20 :SUBMIT_SM_RESP:
+2016.05.22 19:05:23 276 INFO    20 Hex dump (18) bytes:
+2016.05.22 19:05:23 277 INFO    20 00000012:80000004:00000000:00000002:
+2016.05.22 19:05:23 277 INFO    20 3100
+2016.05.22 19:05:23 277 INFO    20 cmd_len=0,cmd_id=-2147483644,cmd_status=0,seq_no=2,message_id=1
+2016.05.22 19:05:23 277 INFO    20  
+2016.05.22 19:05:23 277 INFO    20 SubmitSM processing - response written to connection
+2016.05.22 19:05:24 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:24 482 INFO    24 Message:2 state=DELIVERED
+2016.05.22 19:05:24 482 INFO    24 Delivery Receipt requested
+2016.05.22 19:05:24 483 INFO    23 InboundQueue: no available receiver sessions - moving message(s) to pending queue
+2016.05.22 19:05:24 483 INFO    23 Moved 1 MO messages to the pending queue
+2016.05.22 19:05:26 283 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:26 284 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:26 284 INFO    20 00000010:00000015:00000000:00000003:
+2016.05.22 19:05:26 284 INFO    20 
+2016.05.22 19:05:26 284 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=3
+2016.05.22 19:05:26 284 INFO    20  
+2016.05.22 19:05:26 284 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:26 284 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:26 284 INFO    20 00000010:80000015:00000000:00000003:
+2016.05.22 19:05:26 285 INFO    20 
+2016.05.22 19:05:26 285 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=3
+2016.05.22 19:05:26 285 INFO    20  
+2016.05.22 19:05:29 293 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:29 293 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:29 293 INFO    20 00000010:00000015:00000000:00000004:
+2016.05.22 19:05:29 293 INFO    20 
+2016.05.22 19:05:29 294 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=4
+2016.05.22 19:05:29 294 INFO    20  
+2016.05.22 19:05:29 294 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:29 294 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:29 294 INFO    20 00000010:80000015:00000000:00000004:
+2016.05.22 19:05:29 294 INFO    20 
+2016.05.22 19:05:29 294 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=4
+2016.05.22 19:05:29 294 INFO    20  
+2016.05.22 19:05:29 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:32 295 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:32 295 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:32 295 INFO    20 00000010:00000015:00000000:00000005:
+2016.05.22 19:05:32 295 INFO    20 
+2016.05.22 19:05:32 296 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=5
+2016.05.22 19:05:32 296 INFO    20  
+2016.05.22 19:05:32 296 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:32 300 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:32 300 INFO    20 00000010:80000015:00000000:00000005:
+2016.05.22 19:05:32 300 INFO    20 
+2016.05.22 19:05:32 300 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=5
+2016.05.22 19:05:32 300 INFO    20  
+2016.05.22 19:05:34 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:35 300 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:35 300 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:35 300 INFO    20 00000010:00000015:00000000:00000006:
+2016.05.22 19:05:35 300 INFO    20 
+2016.05.22 19:05:35 300 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=6
+2016.05.22 19:05:35 301 INFO    20  
+2016.05.22 19:05:35 301 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:35 301 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:35 301 INFO    20 00000010:80000015:00000000:00000006:
+2016.05.22 19:05:35 301 INFO    20 
+2016.05.22 19:05:35 301 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=6
+2016.05.22 19:05:35 301 INFO    20  
+2016.05.22 19:05:38 302 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:38 302 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:38 302 INFO    20 00000010:00000015:00000000:00000007:
+2016.05.22 19:05:38 302 INFO    20 
+2016.05.22 19:05:38 302 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=7
+2016.05.22 19:05:38 303 INFO    20  
+2016.05.22 19:05:38 303 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:38 303 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:38 303 INFO    20 00000010:80000015:00000000:00000007:
+2016.05.22 19:05:38 303 INFO    20 
+2016.05.22 19:05:38 303 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=7
+2016.05.22 19:05:38 303 INFO    20  
+2016.05.22 19:05:39 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:39 674 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:05:41 303 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:41 303 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:41 303 INFO    20 00000010:00000015:00000000:00000008:
+2016.05.22 19:05:41 303 INFO    20 
+2016.05.22 19:05:41 304 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=8
+2016.05.22 19:05:41 304 INFO    20  
+2016.05.22 19:05:41 304 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:41 386 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:41 386 INFO    20 00000010:80000015:00000000:00000008:
+2016.05.22 19:05:41 386 INFO    20 
+2016.05.22 19:05:41 386 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=8
+2016.05.22 19:05:41 387 INFO    20  
+2016.05.22 19:05:44 419 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:44 419 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:44 419 INFO    20 00000010:00000015:00000000:00000009:
+2016.05.22 19:05:44 419 INFO    20 
+2016.05.22 19:05:44 419 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=9
+2016.05.22 19:05:44 420 INFO    20  
+2016.05.22 19:05:44 420 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:44 420 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:44 420 INFO    20 00000010:80000015:00000000:00000009:
+2016.05.22 19:05:44 420 INFO    20 
+2016.05.22 19:05:44 420 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=9
+2016.05.22 19:05:44 420 INFO    20  
+2016.05.22 19:05:44 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:47 441 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:47 441 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:47 441 INFO    20 00000010:00000015:00000000:0000000A:
+2016.05.22 19:05:47 441 INFO    20 
+2016.05.22 19:05:47 441 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=10
+2016.05.22 19:05:47 442 INFO    20  
+2016.05.22 19:05:47 442 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:47 442 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:47 442 INFO    20 00000010:80000015:00000000:0000000A:
+2016.05.22 19:05:47 442 INFO    20 
+2016.05.22 19:05:47 442 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=10
+2016.05.22 19:05:47 442 INFO    20  
+2016.05.22 19:05:49 482 INFO    24 Assessing state of 2 messages in the OutboundQueue
+2016.05.22 19:05:50 444 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:50 444 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:50 444 INFO    20 00000010:00000015:00000000:0000000B:
+2016.05.22 19:05:50 444 INFO    20 
+2016.05.22 19:05:50 444 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=11
+2016.05.22 19:05:50 445 INFO    20  
+2016.05.22 19:05:50 445 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:50 445 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:50 445 INFO    20 00000010:80000015:00000000:0000000B:
+2016.05.22 19:05:50 445 INFO    20 
+2016.05.22 19:05:50 445 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=11
+2016.05.22 19:05:50 445 INFO    20  
+2016.05.22 19:05:53 445 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:53 445 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:53 445 INFO    20 00000010:00000015:00000000:0000000C:
+2016.05.22 19:05:53 445 INFO    20 
+2016.05.22 19:05:53 445 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=12
+2016.05.22 19:05:53 446 INFO    20  
+2016.05.22 19:05:53 446 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:53 446 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:53 446 INFO    20 00000010:80000015:00000000:0000000C:
+2016.05.22 19:05:53 446 INFO    20 
+2016.05.22 19:05:53 446 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=12
+2016.05.22 19:05:53 446 INFO    20  
+2016.05.22 19:05:54 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:05:56 446 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:56 446 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:56 446 INFO    20 00000010:00000015:00000000:0000000D:
+2016.05.22 19:05:56 446 INFO    20 
+2016.05.22 19:05:56 446 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=13
+2016.05.22 19:05:56 446 INFO    20  
+2016.05.22 19:05:56 447 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:56 447 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:56 447 INFO    20 00000010:80000015:00000000:0000000D:
+2016.05.22 19:05:56 447 INFO    20 
+2016.05.22 19:05:56 447 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=13
+2016.05.22 19:05:56 447 INFO    20  
+2016.05.22 19:05:59 447 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:05:59 447 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:59 447 INFO    20 00000010:00000015:00000000:0000000E:
+2016.05.22 19:05:59 447 INFO    20 
+2016.05.22 19:05:59 447 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=14
+2016.05.22 19:05:59 447 INFO    20  
+2016.05.22 19:05:59 448 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:05:59 448 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:05:59 448 INFO    20 00000010:80000015:00000000:0000000E:
+2016.05.22 19:05:59 448 INFO    20 
+2016.05.22 19:05:59 448 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=14
+2016.05.22 19:05:59 448 INFO    20  
+2016.05.22 19:05:59 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:02 448 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:02 448 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:02 448 INFO    20 00000010:00000015:00000000:0000000F:
+2016.05.22 19:06:02 448 INFO    20 
+2016.05.22 19:06:02 448 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=15
+2016.05.22 19:06:02 448 INFO    20  
+2016.05.22 19:06:02 449 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:02 449 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:02 449 INFO    20 00000010:80000015:00000000:0000000F:
+2016.05.22 19:06:02 449 INFO    20 
+2016.05.22 19:06:02 449 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=15
+2016.05.22 19:06:02 449 INFO    20  
+2016.05.22 19:06:04 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:05 449 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:05 449 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:05 449 INFO    20 00000010:00000015:00000000:00000010:
+2016.05.22 19:06:05 449 INFO    20 
+2016.05.22 19:06:05 449 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=16
+2016.05.22 19:06:05 449 INFO    20  
+2016.05.22 19:06:05 450 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:05 450 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:05 450 INFO    20 00000010:80000015:00000000:00000010:
+2016.05.22 19:06:05 450 INFO    20 
+2016.05.22 19:06:05 450 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=16
+2016.05.22 19:06:05 450 INFO    20  
+2016.05.22 19:06:08 450 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:08 450 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:08 450 INFO    20 00000010:00000015:00000000:00000011:
+2016.05.22 19:06:08 450 INFO    20 
+2016.05.22 19:06:08 450 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=17
+2016.05.22 19:06:08 450 INFO    20  
+2016.05.22 19:06:08 451 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:08 451 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:08 451 INFO    20 00000010:80000015:00000000:00000011:
+2016.05.22 19:06:08 451 INFO    20 
+2016.05.22 19:06:08 451 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=17
+2016.05.22 19:06:08 451 INFO    20  
+2016.05.22 19:06:09 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:11 451 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:11 451 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:11 451 INFO    20 00000010:00000015:00000000:00000012:
+2016.05.22 19:06:11 451 INFO    20 
+2016.05.22 19:06:11 451 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=18
+2016.05.22 19:06:11 451 INFO    20  
+2016.05.22 19:06:11 452 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:11 452 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:11 452 INFO    20 00000010:80000015:00000000:00000012:
+2016.05.22 19:06:11 452 INFO    20 
+2016.05.22 19:06:11 452 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=18
+2016.05.22 19:06:11 452 INFO    20  
+2016.05.22 19:06:14 452 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:14 452 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:14 452 INFO    20 00000010:00000015:00000000:00000013:
+2016.05.22 19:06:14 452 INFO    20 
+2016.05.22 19:06:14 452 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=19
+2016.05.22 19:06:14 453 INFO    20  
+2016.05.22 19:06:14 453 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:14 453 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:14 453 INFO    20 00000010:80000015:00000000:00000013:
+2016.05.22 19:06:14 453 INFO    20 
+2016.05.22 19:06:14 453 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=19
+2016.05.22 19:06:14 453 INFO    20  
+2016.05.22 19:06:14 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:17 453 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:17 453 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:17 453 INFO    20 00000010:00000015:00000000:00000014:
+2016.05.22 19:06:17 453 INFO    20 
+2016.05.22 19:06:17 453 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=20
+2016.05.22 19:06:17 453 INFO    20  
+2016.05.22 19:06:17 454 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:17 454 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:17 454 INFO    20 00000010:80000015:00000000:00000014:
+2016.05.22 19:06:17 454 INFO    20 
+2016.05.22 19:06:17 454 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=20
+2016.05.22 19:06:17 454 INFO    20  
+2016.05.22 19:06:19 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:20 454 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:20 454 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:20 454 INFO    20 00000010:00000015:00000000:00000015:
+2016.05.22 19:06:20 454 INFO    20 
+2016.05.22 19:06:20 454 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=21
+2016.05.22 19:06:20 454 INFO    20  
+2016.05.22 19:06:20 454 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:20 455 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:20 455 INFO    20 00000010:80000015:00000000:00000015:
+2016.05.22 19:06:20 455 INFO    20 
+2016.05.22 19:06:20 455 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=21
+2016.05.22 19:06:20 455 INFO    20  
+2016.05.22 19:06:23 455 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:23 455 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:23 455 INFO    20 00000010:00000015:00000000:00000016:
+2016.05.22 19:06:23 455 INFO    20 
+2016.05.22 19:06:23 455 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=22
+2016.05.22 19:06:23 455 INFO    20  
+2016.05.22 19:06:23 456 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:23 456 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:23 456 INFO    20 00000010:80000015:00000000:00000016:
+2016.05.22 19:06:23 456 INFO    20 
+2016.05.22 19:06:23 456 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=22
+2016.05.22 19:06:23 456 INFO    20  
+2016.05.22 19:06:24 482 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:06:26 456 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:26 456 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:26 456 INFO    20 00000010:00000015:00000000:00000017:
+2016.05.22 19:06:26 456 INFO    20 
+2016.05.22 19:06:26 456 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=23
+2016.05.22 19:06:26 456 INFO    20  
+2016.05.22 19:06:26 457 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:26 457 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:26 457 INFO    20 00000010:80000015:00000000:00000017:
+2016.05.22 19:06:26 457 INFO    20 
+2016.05.22 19:06:26 457 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=23
+2016.05.22 19:06:26 457 INFO    20  
+2016.05.22 19:06:29 457 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:29 457 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:29 457 INFO    20 00000010:00000015:00000000:00000018:
+2016.05.22 19:06:29 457 INFO    20 
+2016.05.22 19:06:29 457 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=24
+2016.05.22 19:06:29 457 INFO    20  
+2016.05.22 19:06:29 458 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:29 458 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:29 458 INFO    20 00000010:80000015:00000000:00000018:
+2016.05.22 19:06:29 458 INFO    20 
+2016.05.22 19:06:29 458 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=24
+2016.05.22 19:06:29 458 INFO    20  
+2016.05.22 19:06:29 482 INFO    24 Lifecycle Service: OutboundQueue is empty  - waiting
+2016.05.22 19:06:32 458 INFO    20 : ENQUIRE_LINK:
+2016.05.22 19:06:32 458 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:32 458 INFO    20 00000010:00000015:00000000:00000019:
+2016.05.22 19:06:32 458 INFO    20 
+2016.05.22 19:06:32 458 INFO    20 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=25
+2016.05.22 19:06:32 458 INFO    20  
+2016.05.22 19:06:32 459 INFO    20 :ENQUIRE_LINK_RESP:
+2016.05.22 19:06:32 459 INFO    20 Hex dump (16) bytes:
+2016.05.22 19:06:32 459 INFO    20 00000010:80000015:00000000:00000019:
+2016.05.22 19:06:32 459 INFO    20 
+2016.05.22 19:06:32 459 INFO    20 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=25
+2016.05.22 19:06:32 459 INFO    20  
+2016.05.22 19:06:33 966 INFO    20 Socket exception: probably connection closed by client without UNBIND
+2016.05.22 19:06:33 968 INFO    20 StandardConnectionHandler waiting for connection
+2016.05.22 19:06:39 678 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:07:21 241 INFO    21 StandardConnectionHandler accepted a connection
+2016.05.22 19:07:21 242 INFO    21 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:07:21 250 INFO    21 : BIND_TRANSMITTER:
+2016.05.22 19:07:21 251 INFO    21 Hex dump (50) bytes:
+2016.05.22 19:07:21 251 INFO    21 00000032:00000002:00000000:00000001:
+2016.05.22 19:07:21 251 INFO    21 736D7070:636C6965:6E743100:70617373:
+2016.05.22 19:07:21 251 INFO    21 776F7264:0070726F:64756365:72003400:
+2016.05.22 19:07:21 251 INFO    21 0000
+2016.05.22 19:07:21 251 INFO    21 cmd_len=50,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient1
+2016.05.22 19:07:21 251 INFO    21 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:07:21 252 INFO    21 addr_npi=0,address_range=
+2016.05.22 19:07:21 252 INFO    21  
+2016.05.22 19:07:21 252 INFO    21 New transmitter session bound to SMPPSim
+2016.05.22 19:07:21 252 INFO    21 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:07:21 252 INFO    21 Hex dump (24) bytes:
+2016.05.22 19:07:21 252 INFO    21 00000018:80000002:00000000:00000001:
+2016.05.22 19:07:21 252 INFO    21 534D5050:53696D00:
+2016.05.22 19:07:21 252 INFO    21 cmd_len=0,cmd_id=-2147483646,cmd_status=0,seq_no=1,system_id=SMPPSim
+2016.05.22 19:07:21 252 INFO    21  
+2016.05.22 19:07:24 229 INFO    21 : Standard SUBMIT_SM:
+2016.05.22 19:07:24 229 INFO    21 Hex dump (155) bytes:
+2016.05.22 19:07:24 229 INFO    21 0000009B:00000004:00000000:00000002:
+2016.05.22 19:07:24 229 INFO    21 434D5400:00003136:31360000:00313731:
+2016.05.22 19:07:24 229 INFO    21 37000000:01000001:0000006F:43757374:
+2016.05.22 19:07:24 230 INFO    21 6F6D6572:7B69643D:342C2063:7573746F:
+2016.05.22 19:07:24 230 INFO    21 6D65724E:523D312C:206E616D:653D274A:
+2016.05.22 19:07:24 230 INFO    21 61636B20:42617565:72272C20:656D6169:
+2016.05.22 19:07:24 230 INFO    21 6C3D2774:65737440:776D706D:2E636F6D:
+2016.05.22 19:07:24 230 INFO    21 272C2074:656C4E72:3D273132:33343527:
+2016.05.22 19:07:24 230 INFO    21 2C206164:64726573:733D2753:63686F74:
+2016.05.22 19:07:24 230 INFO    21 74656E72:696E6720:35277D
+2016.05.22 19:07:24 230 INFO    21 cmd_len=155,cmd_id=4,cmd_status=0,seq_no=2,service_type=CMT,source_addr_ton=0
+2016.05.22 19:07:24 231 INFO    21 source_addr_npi=0,source_addr=1616,dest_addr_ton=0,dest_addr_npi=0
+2016.05.22 19:07:24 231 INFO    21 dest_addr=1717,esm_class=0,protocol_ID=0,priority_flag=1
+2016.05.22 19:07:24 231 INFO    21 schedule_delivery_time=,validity_period=,registered_delivery_flag=1
+2016.05.22 19:07:24 231 INFO    21 replace_if_present_flag=0,data_coding=0,sm_default_msg_id=0,sm_length=111
+2016.05.22 19:07:24 231 INFO    21 short_message=Customer{id=4, customerNR=1, name='Jack Bauer'
+2016.05.22 19:07:24 231 INFO    21  email='test@wmpm.com', telNr='12345', address='Schottenring 5'}
+2016.05.22 19:07:24 231 INFO    21  
+2016.05.22 19:07:24 231 INFO    21 Validity period is not set: defaulting to 5 minutes from now
+2016.05.22 19:07:24 232 INFO    21 Generated default validity period=160522191224000+
+2016.05.22 19:07:24 232 INFO    21 :SUBMIT_SM_RESP:
+2016.05.22 19:07:24 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:24 232 INFO    21 Hex dump (18) bytes:
+2016.05.22 19:07:24 232 INFO    21 00000012:80000004:00000000:00000002:
+2016.05.22 19:07:24 232 INFO    21 3200
+2016.05.22 19:07:24 233 INFO    21 cmd_len=0,cmd_id=-2147483644,cmd_status=0,seq_no=2,message_id=2
+2016.05.22 19:07:24 233 INFO    21  
+2016.05.22 19:07:24 233 INFO    21 SubmitSM processing - response written to connection
+2016.05.22 19:07:27 234 INFO    21 : ENQUIRE_LINK:
+2016.05.22 19:07:27 234 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:27 234 INFO    21 00000010:00000015:00000000:00000003:
+2016.05.22 19:07:27 234 INFO    21 
+2016.05.22 19:07:27 234 INFO    21 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=3
+2016.05.22 19:07:27 234 INFO    21  
+2016.05.22 19:07:27 234 INFO    21 :ENQUIRE_LINK_RESP:
+2016.05.22 19:07:27 235 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:27 235 INFO    21 00000010:80000015:00000000:00000003:
+2016.05.22 19:07:27 235 INFO    21 
+2016.05.22 19:07:27 235 INFO    21 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=3
+2016.05.22 19:07:27 235 INFO    21  
+2016.05.22 19:07:29 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:30 235 INFO    21 : ENQUIRE_LINK:
+2016.05.22 19:07:30 235 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:30 235 INFO    21 00000010:00000015:00000000:00000004:
+2016.05.22 19:07:30 235 INFO    21 
+2016.05.22 19:07:30 235 INFO    21 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=4
+2016.05.22 19:07:30 235 INFO    21  
+2016.05.22 19:07:30 236 INFO    21 :ENQUIRE_LINK_RESP:
+2016.05.22 19:07:30 236 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:30 236 INFO    21 00000010:80000015:00000000:00000004:
+2016.05.22 19:07:30 236 INFO    21 
+2016.05.22 19:07:30 236 INFO    21 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=4
+2016.05.22 19:07:30 236 INFO    21  
+2016.05.22 19:07:33 236 INFO    21 : ENQUIRE_LINK:
+2016.05.22 19:07:33 236 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:33 236 INFO    21 00000010:00000015:00000000:00000005:
+2016.05.22 19:07:33 236 INFO    21 
+2016.05.22 19:07:33 236 INFO    21 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=5
+2016.05.22 19:07:33 237 INFO    21  
+2016.05.22 19:07:33 237 INFO    21 :ENQUIRE_LINK_RESP:
+2016.05.22 19:07:33 237 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:33 237 INFO    21 00000010:80000015:00000000:00000005:
+2016.05.22 19:07:33 237 INFO    21 
+2016.05.22 19:07:33 237 INFO    21 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=5
+2016.05.22 19:07:33 237 INFO    21  
+2016.05.22 19:07:34 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:34 232 INFO    24 Message:2 state=DELIVERED
+2016.05.22 19:07:34 232 INFO    24 Delivery Receipt requested
+2016.05.22 19:07:34 232 INFO    23 InboundQueue: no available receiver sessions - moving message(s) to pending queue
+2016.05.22 19:07:34 233 INFO    23 Moved 1 MO messages to the pending queue
+2016.05.22 19:07:36 237 INFO    21 : ENQUIRE_LINK:
+2016.05.22 19:07:36 237 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:36 237 INFO    21 00000010:00000015:00000000:00000006:
+2016.05.22 19:07:36 237 INFO    21 
+2016.05.22 19:07:36 237 INFO    21 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=6
+2016.05.22 19:07:36 237 INFO    21  
+2016.05.22 19:07:36 238 INFO    21 :ENQUIRE_LINK_RESP:
+2016.05.22 19:07:36 238 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:36 238 INFO    21 00000010:80000015:00000000:00000006:
+2016.05.22 19:07:36 238 INFO    21 
+2016.05.22 19:07:36 238 INFO    21 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=6
+2016.05.22 19:07:36 238 INFO    21  
+2016.05.22 19:07:39 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:39 238 INFO    21 : ENQUIRE_LINK:
+2016.05.22 19:07:39 238 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:39 238 INFO    21 00000010:00000015:00000000:00000007:
+2016.05.22 19:07:39 238 INFO    21 
+2016.05.22 19:07:39 238 INFO    21 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=7
+2016.05.22 19:07:39 239 INFO    21  
+2016.05.22 19:07:39 239 INFO    21 :ENQUIRE_LINK_RESP:
+2016.05.22 19:07:39 239 INFO    21 Hex dump (16) bytes:
+2016.05.22 19:07:39 239 INFO    21 00000010:80000015:00000000:00000007:
+2016.05.22 19:07:39 239 INFO    21 
+2016.05.22 19:07:39 239 INFO    21 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=7
+2016.05.22 19:07:39 239 INFO    21  
+2016.05.22 19:07:39 675 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:07:39 714 INFO    21 Socket exception: probably connection closed by client without UNBIND
+2016.05.22 19:07:39 716 INFO    21 StandardConnectionHandler waiting for connection
+2016.05.22 19:07:44 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:49 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:54 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:07:59 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:04 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:09 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:14 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:19 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:24 232 INFO    24 Assessing state of 1 messages in the OutboundQueue
+2016.05.22 19:08:29 232 INFO    24 Lifecycle Service: OutboundQueue is empty  - waiting
+2016.05.22 19:08:39 672 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:09:24 966 INFO    18 StandardConnectionHandler accepted a connection
+2016.05.22 19:09:24 966 INFO    18 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:09:24 974 INFO    18 : BIND_TRANSMITTER:
+2016.05.22 19:09:24 975 INFO    18 Hex dump (50) bytes:
+2016.05.22 19:09:24 976 INFO    18 00000032:00000002:00000000:00000001:
+2016.05.22 19:09:24 976 INFO    18 736D7070:636C6965:6E743100:70617373:
+2016.05.22 19:09:24 976 INFO    18 776F7264:0070726F:64756365:72003400:
+2016.05.22 19:09:24 976 INFO    18 0000
+2016.05.22 19:09:24 976 INFO    18 cmd_len=50,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient1
+2016.05.22 19:09:24 977 INFO    18 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:09:24 977 INFO    18 addr_npi=0,address_range=
+2016.05.22 19:09:24 977 INFO    18  
+2016.05.22 19:09:24 977 INFO    18 New transmitter session bound to SMPPSim
+2016.05.22 19:09:24 977 INFO    18 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:09:24 977 INFO    18 Hex dump (24) bytes:
+2016.05.22 19:09:24 977 INFO    18 00000018:80000002:00000000:00000001:
+2016.05.22 19:09:24 977 INFO    18 534D5050:53696D00:
+2016.05.22 19:09:24 977 INFO    18 cmd_len=0,cmd_id=-2147483646,cmd_status=0,seq_no=1,system_id=SMPPSim
+2016.05.22 19:09:24 978 INFO    18  
+2016.05.22 19:09:27 980 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:27 980 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:27 980 INFO    18 00000010:00000015:00000000:00000002:
+2016.05.22 19:09:27 980 INFO    18 
+2016.05.22 19:09:27 980 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=2
+2016.05.22 19:09:27 980 INFO    18  
+2016.05.22 19:09:27 981 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:27 981 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:27 981 INFO    18 00000010:80000015:00000000:00000002:
+2016.05.22 19:09:27 981 INFO    18 
+2016.05.22 19:09:27 981 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=2
+2016.05.22 19:09:27 981 INFO    18  
+2016.05.22 19:09:30 981 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:30 981 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:30 981 INFO    18 00000010:00000015:00000000:00000003:
+2016.05.22 19:09:30 981 INFO    18 
+2016.05.22 19:09:30 981 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=3
+2016.05.22 19:09:30 982 INFO    18  
+2016.05.22 19:09:30 982 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:30 982 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:30 982 INFO    18 00000010:80000015:00000000:00000003:
+2016.05.22 19:09:30 982 INFO    18 
+2016.05.22 19:09:30 982 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=3
+2016.05.22 19:09:30 982 INFO    18  
+2016.05.22 19:09:33 983 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:33 983 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:33 983 INFO    18 00000010:00000015:00000000:00000004:
+2016.05.22 19:09:33 983 INFO    18 
+2016.05.22 19:09:33 983 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=4
+2016.05.22 19:09:33 983 INFO    18  
+2016.05.22 19:09:33 984 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:33 984 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:33 984 INFO    18 00000010:80000015:00000000:00000004:
+2016.05.22 19:09:33 984 INFO    18 
+2016.05.22 19:09:33 984 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=4
+2016.05.22 19:09:33 984 INFO    18  
+2016.05.22 19:09:36 985 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:36 985 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:36 985 INFO    18 00000010:00000015:00000000:00000005:
+2016.05.22 19:09:36 985 INFO    18 
+2016.05.22 19:09:36 985 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=5
+2016.05.22 19:09:36 985 INFO    18  
+2016.05.22 19:09:36 986 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:36 986 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:36 986 INFO    18 00000010:80000015:00000000:00000005:
+2016.05.22 19:09:36 986 INFO    18 
+2016.05.22 19:09:36 986 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=5
+2016.05.22 19:09:36 986 INFO    18  
+2016.05.22 19:09:39 669 INFO    26 Processing 0 messages in the delayed inbound queue
+2016.05.22 19:09:39 986 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:39 986 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:39 986 INFO    18 00000010:00000015:00000000:00000006:
+2016.05.22 19:09:39 986 INFO    18 
+2016.05.22 19:09:39 986 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=6
+2016.05.22 19:09:39 986 INFO    18  
+2016.05.22 19:09:39 987 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:39 987 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:39 987 INFO    18 00000010:80000015:00000000:00000006:
+2016.05.22 19:09:39 987 INFO    18 
+2016.05.22 19:09:39 987 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=6
+2016.05.22 19:09:39 987 INFO    18  
+2016.05.22 19:09:42 987 INFO    18 : ENQUIRE_LINK:
+2016.05.22 19:09:42 987 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:42 987 INFO    18 00000010:00000015:00000000:00000007:
+2016.05.22 19:09:42 987 INFO    18 
+2016.05.22 19:09:42 987 INFO    18 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=7
+2016.05.22 19:09:42 987 INFO    18  
+2016.05.22 19:09:42 988 INFO    18 :ENQUIRE_LINK_RESP:
+2016.05.22 19:09:42 988 INFO    18 Hex dump (16) bytes:
+2016.05.22 19:09:42 988 INFO    18 00000010:80000015:00000000:00000007:
+2016.05.22 19:09:42 988 INFO    18 
+2016.05.22 19:09:42 988 INFO    18 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=7
+2016.05.22 19:09:42 988 INFO    18  
+2016.05.22 19:09:43 36  INFO    18 Socket exception: probably connection closed by client without UNBIND
+2016.05.22 19:09:43 37  INFO    18 StandardConnectionHandler waiting for connection
+2016.05.22 19:10:07 389 INFO    16 StandardConnectionHandler accepted a connection
+2016.05.22 19:10:07 389 INFO    16 Protocol handler is of type StandardProtocolHandler
+2016.05.22 19:10:07 397 INFO    16 : BIND_TRANSMITTER:
+2016.05.22 19:10:07 397 INFO    16 Hex dump (50) bytes:
+2016.05.22 19:10:07 397 INFO    16 00000032:00000002:00000000:00000001:
+2016.05.22 19:10:07 397 INFO    16 736D7070:636C6965:6E743100:70617373:
+2016.05.22 19:10:07 397 INFO    16 776F7264:0070726F:64756365:72003400:
+2016.05.22 19:10:07 397 INFO    16 0000
+2016.05.22 19:10:07 398 INFO    16 cmd_len=50,cmd_id=2,cmd_status=0,seq_no=1,system_id=smppclient1
+2016.05.22 19:10:07 398 INFO    16 password=password,system_type=producer,interface_version=52,addr_ton=0
+2016.05.22 19:10:07 398 INFO    16 addr_npi=0,address_range=
+2016.05.22 19:10:07 398 INFO    16  
+2016.05.22 19:10:07 398 INFO    16 New transmitter session bound to SMPPSim
+2016.05.22 19:10:07 398 INFO    16 : BIND_TRANSMITTER_RESP:
+2016.05.22 19:10:07 398 INFO    16 Hex dump (24) bytes:
+2016.05.22 19:10:07 398 INFO    16 00000018:80000002:00000000:00000001:
+2016.05.22 19:10:07 398 INFO    16 534D5050:53696D00:
+2016.05.22 19:10:07 399 INFO    16 cmd_len=0,cmd_id=-2147483646,cmd_status=0,seq_no=1,system_id=SMPPSim
+2016.05.22 19:10:07 399 INFO    16  
+2016.05.22 19:10:10 401 INFO    16 : ENQUIRE_LINK:
+2016.05.22 19:10:10 401 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:10 401 INFO    16 00000010:00000015:00000000:00000002:
+2016.05.22 19:10:10 401 INFO    16 
+2016.05.22 19:10:10 401 INFO    16 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=2
+2016.05.22 19:10:10 401 INFO    16  
+2016.05.22 19:10:10 401 INFO    16 :ENQUIRE_LINK_RESP:
+2016.05.22 19:10:10 402 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:10 402 INFO    16 00000010:80000015:00000000:00000002:
+2016.05.22 19:10:10 402 INFO    16 
+2016.05.22 19:10:10 402 INFO    16 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=2
+2016.05.22 19:10:10 402 INFO    16  
+2016.05.22 19:10:13 405 INFO    16 : ENQUIRE_LINK:
+2016.05.22 19:10:13 405 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:13 405 INFO    16 00000010:00000015:00000000:00000003:
+2016.05.22 19:10:13 405 INFO    16 
+2016.05.22 19:10:13 406 INFO    16 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=3
+2016.05.22 19:10:13 406 INFO    16  
+2016.05.22 19:10:13 406 INFO    16 :ENQUIRE_LINK_RESP:
+2016.05.22 19:10:13 406 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:13 406 INFO    16 00000010:80000015:00000000:00000003:
+2016.05.22 19:10:13 406 INFO    16 
+2016.05.22 19:10:13 406 INFO    16 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=3
+2016.05.22 19:10:13 406 INFO    16  
+2016.05.22 19:10:16 407 INFO    16 : ENQUIRE_LINK:
+2016.05.22 19:10:16 407 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:16 407 INFO    16 00000010:00000015:00000000:00000004:
+2016.05.22 19:10:16 407 INFO    16 
+2016.05.22 19:10:16 407 INFO    16 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=4
+2016.05.22 19:10:16 407 INFO    16  
+2016.05.22 19:10:16 407 INFO    16 :ENQUIRE_LINK_RESP:
+2016.05.22 19:10:16 408 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:16 408 INFO    16 00000010:80000015:00000000:00000004:
+2016.05.22 19:10:16 408 INFO    16 
+2016.05.22 19:10:16 408 INFO    16 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=4
+2016.05.22 19:10:16 408 INFO    16  
+2016.05.22 19:10:19 408 INFO    16 : ENQUIRE_LINK:
+2016.05.22 19:10:19 408 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:19 408 INFO    16 00000010:00000015:00000000:00000005:
+2016.05.22 19:10:19 408 INFO    16 
+2016.05.22 19:10:19 408 INFO    16 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=5
+2016.05.22 19:10:19 408 INFO    16  
+2016.05.22 19:10:19 408 INFO    16 :ENQUIRE_LINK_RESP:
+2016.05.22 19:10:19 409 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:19 409 INFO    16 00000010:80000015:00000000:00000005:
+2016.05.22 19:10:19 409 INFO    16 
+2016.05.22 19:10:19 409 INFO    16 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=5
+2016.05.22 19:10:19 409 INFO    16  
+2016.05.22 19:10:22 409 INFO    16 : ENQUIRE_LINK:
+2016.05.22 19:10:22 409 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:22 409 INFO    16 00000010:00000015:00000000:00000006:
+2016.05.22 19:10:22 409 INFO    16 
+2016.05.22 19:10:22 409 INFO    16 cmd_len=16,cmd_id=21,cmd_status=0,seq_no=6
+2016.05.22 19:10:22 409 INFO    16  
+2016.05.22 19:10:22 409 INFO    16 :ENQUIRE_LINK_RESP:
+2016.05.22 19:10:22 410 INFO    16 Hex dump (16) bytes:
+2016.05.22 19:10:22 410 INFO    16 00000010:80000015:00000000:00000006:
+2016.05.22 19:10:22 410 INFO    16 
+2016.05.22 19:10:22 410 INFO    16 cmd_len=0,cmd_id=-2147483627,cmd_status=0,seq_no=6
+2016.05.22 19:10:22 410 INFO    16  
+2016.05.22 19:10:23 169 INFO    16 Socket exception: probably connection closed by client without UNBIND
+2016.05.22 19:10:23 170 INFO    16 StandardConnectionHandler waiting for connection
