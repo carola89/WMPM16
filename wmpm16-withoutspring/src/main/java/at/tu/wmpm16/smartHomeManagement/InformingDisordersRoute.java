@@ -27,7 +27,7 @@ public class InformingDisordersRoute  extends RouteBuilder {
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Operator, " + "\n" + "we have a disorder. " + "\n" + "Best regards, Smart home"))
 	 	 .multicast()
-		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=netzwerkbetreiber@gmail.com", "smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=kraftwerkbetreiber@gmail.com")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.kraftwerk}}", "smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.kraftwerk}}")
 		 .log("Email done Disorder");
 		
 		
@@ -63,21 +63,21 @@ public class InformingDisordersRoute  extends RouteBuilder {
         .setHeader("Subject", constant("Information mail about Disorder"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer 1, " + "\n" + "we have a disorder. Sorry. " + "\n" + "Best regards, Smart home"))
-	 	 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+	 	 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done Disorder Customer1");
          
         from("direct:customer2")
         .setHeader("Subject", constant("Information mail about Disorder"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer 2, " + "\n" + "we have a disorder. Sorry. " + "\n" + "Best regards, Smart home"))
-	 	 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+	 	 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done Disorder Customer2");
          
         from("direct:customer3")
         .setHeader("Subject", constant("Information mail about Disorder"))
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer 3, " + "\n" + "we have a disorder. Sorry. " + "\n" + "Best regards, Smart home"))
-	 	 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+	 	 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done Disorder Customer3");
         
         

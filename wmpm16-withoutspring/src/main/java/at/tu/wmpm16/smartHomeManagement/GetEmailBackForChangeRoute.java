@@ -43,7 +43,7 @@ public class GetEmailBackForChangeRoute extends RouteBuilder{
 		errorHandler(deadLetterChannel("log:dead?level=ERROR")
 				.useOriginalMessage().maximumRedeliveries(3).redeliveryDelay(5000));
 		
-		from("imaps://imap.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&consumer.delay=1000&delete=false&unseen=true&searchTerm.from=mmiheller@gmail.com")
+		from("imaps://{{mail.imap.address}}?username={{mail.userName}}&password={{mail.password}}&consumer.delay=1000&delete=false&unseen=true&searchTerm.from=mmiheller@gmail.com")
 		.split().method(SplitAttachementsBean.class, "splittAttachments")
 		.log("Body: "+body().convertToString())
 		.choice()

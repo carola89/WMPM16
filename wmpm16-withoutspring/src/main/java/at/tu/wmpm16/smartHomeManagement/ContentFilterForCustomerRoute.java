@@ -17,6 +17,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 
 	@Override
 	public void configure() throws Exception {
+	    
 		CsvDataFormat csv = new CsvDataFormat();
 		
 		errorHandler(deadLetterChannel("log:dead?level=ERROR")
@@ -57,7 +58,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
 		 //.to("velocity://mail-templates/mail.vm")
-		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done coldwaterconsumptionCustomer");
 		 
 		 from(Constants.filePath + "?fileName=gasconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
@@ -92,7 +93,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
 		 //.to("velocity://mail-templates/mail.vm")
-		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done gasconsumptionCustomer");
 		 
 		 from(Constants.filePath + "?fileName=electricityconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
@@ -127,7 +128,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
 		 //.to("velocity://mail-templates/mail.vm")
-		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done electricityconsumptionCustomer");
 		 
 		 from(Constants.filePath + "?fileName=heatingconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
@@ -162,7 +163,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
 		 //.to("velocity://mail-templates/mail.vm")
-		 .to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 .log("Email done heatingconsumptionCustomer");
 		
 		 from(Constants.filePath + "?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmm}.csv&noop=true")
@@ -195,10 +196,10 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 		 	.setHeader("From", constant("wmpm16.10@gmail.com"))
 		 	.setBody(constant("Dear Customer, " + "\n" + "we have read your data in the database. Please find enclosed your data. " + "\n" + "Best regards, Smart home"))
 		 	//.to("velocity://mail-templates/mail.vm")
-		 	.to("smtps://smtp.gmail.com?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com")
+		 	.to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to}}")
 		 	.log("Email done warmwaterconsumptionCustomer")
 		 	.log("BEGINNING DROPBOX")
-	        .to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + Constants.filePathDropbox + "&remotePath=/consumptions")
+	        .to("dropbox://put?{{dropbox.auth.param}}&uploadMode=add&localPath=" + Constants.filePathDropbox + "&remotePath=/consumptions")
 			.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
 	        .end();
 	}
