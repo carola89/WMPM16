@@ -2,6 +2,8 @@ Project for 188.924 Workflow Modeling and Process Management TU Wien
 
 Generic interface für smart home
 
+Link to github: https://github.com/carola89/WMPM16
+
 # WMPM16
 
 ## Documentation
@@ -37,3 +39,12 @@ To Access H2 Console in Browser use following URL:
 	JDBC URL: jdbc:h2:tcp://localhost/~/wmpm16		
 	User: sa
 	No Password
+
+Start MainApp as Java Application
+
+Mail addresses:
+kraftwerkbetreiber@gmail.com and
+wmpm16.10@gmail.com
+
+Dropbox Account:
+wmpm16.10@gmail.com
