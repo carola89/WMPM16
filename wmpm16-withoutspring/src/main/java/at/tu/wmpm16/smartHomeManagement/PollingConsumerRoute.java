@@ -85,7 +85,7 @@ public class PollingConsumerRoute extends RouteBuilder {
 				}
 			}
 			})
-		.wireTap("ftp://speedtest.tele2.net/upload/")
+		.wireTap(Constants.ftpUrlLog)
 		.wireTap("jms:consumptionAudit")
 		.process(new WireTapLogPolling());
 	}

@@ -48,7 +48,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 			.setHeader("CamelFileName" , simple("coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=coldwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
-			.wireTap("ftp://speedtest.tele2.net/upload/")
+			.wireTap(Constants.ftpUrl)
 	        .end();
 
 		 //Mail coldwaterconsumptionCustomer
@@ -83,7 +83,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 			.setHeader("CamelFileName" , simple("gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=gasconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
-			.wireTap("ftp://speedtest.tele2.net/upload/")
+			.wireTap(Constants.ftpUrl)
 	        .end();
 		 
 		 //Mail gasconsumptionCustomer
@@ -118,7 +118,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 			.setHeader("CamelFileName" , simple("electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=electricityconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
 	        .log("done.")
-			.wireTap("ftp://speedtest.tele2.net/upload/")
+			.wireTap(Constants.ftpUrl)
 	        .end();
 		 
 		 //Mail electricityconsumptionCustomer
@@ -152,7 +152,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 			.process(new WireTapLogContentFilter())
 			.setHeader("CamelFileName" , simple("heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=heatingconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
-			.wireTap("ftp://speedtest.tele2.net/upload/")
+			.wireTap(Constants.ftpUrl)
 	        .log("done.")
 	        .end();
 		 
@@ -187,7 +187,7 @@ public class ContentFilterForCustomerRoute extends RouteBuilder{
 			.process(new WireTapLogContentFilter())
 			.setHeader("CamelFileName" , simple("warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv"))
 	        .to(Constants.filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv")
-			.wireTap("ftp://speedtest.tele2.net/upload/")
+			.wireTap(Constants.ftpUrl)
 	        .log("done.");
 			//Mail warmwaterconsumptionCustomer
 		 	from(Constants.filePath + "?fileName=warmwaterconsumptionCustomer-${date:now:yyyyMMddhhmm}.csv&noop=true")

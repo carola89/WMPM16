@@ -6,10 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.MessageHistory;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.properties.PropertiesComponent;
 import org.apache.camel.dataformat.csv.CsvDataFormat;
 
 import at.tu.wmpm16.Constants;
@@ -36,7 +38,7 @@ public class GetEmailBackForChangeRoute extends RouteBuilder{
 		em.getTransaction().begin();
 		
 		CsvDataFormat csv = new CsvDataFormat();
-
+		
 	    csv.setDelimiter(','); // Tabs
 	    csv.setQuoteDisabled(true); // Otherwise single quotes will be doubled.
 

@@ -15,6 +15,14 @@ To start the H2 DB in Server Mode run:
 	java -cp h2-1.4.191.jar org.h2.tools.Server
 
 
+A local FTP-Server with User "test" and no password has to be started.
+
+For local installation (Windows only) we used FileZilla with standard configuration.
+
+The local FTP-URL is: ftp://test@localhost:21
+
+
+
 To Access H2 use following JDBC Connection URL:
 
 	jdbc:h2:tcp://localhost/~/wmpm16

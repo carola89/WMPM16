@@ -9,4 +9,10 @@ public class Constants {
 	public static String filePathPdf = "file:../wmpm/file-pdf";
 	public static String filePathBack = "file:../wmpm/back"; // for read from mail and save back to db
 	
+	public static String ftpUrl = "ftp://test@localhost:21/monatlich";
+	public static String ftpUrlLog = "ftp://test@localhost:21/log-pollingconsumer";
+	
+//	public static String ftpUrl = "ftp://speedtest.tele2.net/upload/";
+//	public static String ftpUrlLog = "ftp://speedtest.tele2.net/upload/";
+	
 }
