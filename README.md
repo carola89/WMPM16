@@ -2,6 +2,8 @@ Project for 188.924 Workflow Modeling and Process Management TU Wien
 
 Generic interface für smart home
 
+Link to github: https://github.com/carola89/WMPM16
+
 # WMPM16
 
 ## Documentation
