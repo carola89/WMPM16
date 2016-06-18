@@ -5,6 +5,8 @@ import javax.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.apache.camel.impl.ParameterConfiguration;
 import org.apache.camel.main.Main;
 
 import at.tu.wmpm16.smartHomeManagement.CompanyCheckExcelRoute;
@@ -30,8 +32,16 @@ public class MainApp {
      */
     public static void main(String... args) throws Exception {
         Main main = new Main();
+        
         //main.addRouteBuilder(new MyRouteBuilder());
         CamelContext context = main.getOrCreateCamelContext();
+        
+        PropertiesComponent pc = new PropertiesComponent();
+        pc.setLocation("./accounts.properties");
+        context.addComponent("properties", pc);
+        
+        main.bind("properties", pc);
+        
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
         context.addComponent("jms", JmsComponent.jmsComponent(connectionFactory));
         main.addRouteBuilder(new PollingConsumerRoute());
