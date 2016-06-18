@@ -33,7 +33,7 @@ To Access H2 Console in Browser use following URL:
 Start MainApp as Java Application
 
 Mail addresses:
-kraftwerkbetreiber@gmail.com
+kraftwerkbetreiber@gmail.com and
 wmpm16.10@gmail.com
 
 Dropbox Account:
