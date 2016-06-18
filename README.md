@@ -29,3 +29,5 @@ To Access H2 Console in Browser use following URL:
 	JDBC URL: jdbc:h2:tcp://localhost/~/wmpm16		
 	User: sa
 	No Password
+
+Start MainApp as Java Application
