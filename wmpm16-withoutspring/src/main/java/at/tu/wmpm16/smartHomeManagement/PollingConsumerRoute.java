@@ -71,8 +71,6 @@ public class PollingConsumerRoute extends RouteBuilder {
 		 			.marshal(bindyWwc)
 					.setHeader("CamelFileName" , simple("warmwaterconsumption-${date:now:yyyyMMddhhmm}.csv"))
 		 			.to(Constants.filePath + "?fileName=warmwaterconsumption-${date:now:yyyyMMddhhmm}.csv")
-		 			//.to("dropbox://put?accessToken=2SJnFMZYQSAAAAAAAAAACkmidQvXyHOdAnvBkDmMmcRCwAAuGUjPbLsHC1CJPhtl&clientIdentifier=wmpm16&uploadMode=add&localPath=" + filePathDropbox + "&remotePath=/consumptions")
-		 			//.bean(DeleteFilesAfterDropboxUpdate.class, "delete")
 		 	.endChoice()
 		 	.end()
  			.to("direct:log"); //end splitter
@@ -90,56 +88,5 @@ public class PollingConsumerRoute extends RouteBuilder {
 		.wireTap("ftp://speedtest.tele2.net/upload/")
 		.wireTap("jms:consumptionAudit")
 		.process(new WireTapLogPolling());
-		 
-		 	
-//		 from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.resultClass=at.tu.wmpm16.models.Customer&consumer.delay=200000&consumer.nativeQuery=select customer.* from customer, (select sn,s,v,location,smartmeternr,customer_id from (select sn,s,v from (SELECT sum(measuredValue) s,standardValue v,smartMeterNr sn FROM ColdWaterConsumption group by smartMeterNr,standardvalue) where s>v),smartmeter where smartmeternr = sn) where customer_id = customer.id")
-//		 .process(new Processor() {
-//				@SuppressWarnings("unchecked")
-//				public void process(Exchange exchange) throws Exception {
-//					System.out.println("Message History AAAA1 ");
-//
-//					Customer c = (Customer) exchange.getIn().getBody();
-//					System.out.println("Message History AAAA ");
-//					List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
-//					Object custom = exchange.getIn().getHeaders();
-//					System.out.println(c.getEmail() + " custom " + exchange.getIn().getHeaders().keySet().iterator().next());
-//					for (MessageHistory m : list){
-//						System.out.println("Message History AAAA " + m.getNode().getShortName() + ": " + m.getNode().getLabel());
-//					}
-//				}
-//				}).to("smpp://smppclient1@localhost:2775?password=password&enquireLinkTimer=3000&transactionTimer=5000&systemType=producer");
-
-//		 from("file:c:/wmpm/file")
-//			 .bean(FileAsMailAttachementBean.class, "process")
-//			 .setHeader("Subject", constant("testmail"))
-//		 	 .setBody(constant("hello"))
-//			 .to("smtps://smtp.gmail.com:587?username=wmpm16.10@gmail.com&password=wmpm1610&to=wmpm16.10@gmail.com");
-		 
-		 
-//		from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumeDelete=false&consumer.query=select o from at.tu.wmpm16.models.ColdWaterConsumption o")
-//				.bean(new PollingConsumerBean(), "transform").aggregate(new FileAggregationStrategy()).header("id")
-//				.completionSize(3)
-//				.bean(new TransformToCSVBean()).marshal(bindy).log("transformed").
-//				process(new Processor() {
-//					@SuppressWarnings("unchecked")
-//					public void process(Exchange exchange) throws Exception {
-//						List<MessageHistory> list = exchange.getProperty(Exchange.MESSAGE_HISTORY, List.class);
-//						for (MessageHistory m : list){
-//							System.out.println("Message History " + m.getNode().getShortName());
-//						}
-//					}
-//					})
-//				.wireTap("jms:consumptionAudit")
-//				.process(new WireTapLogPolling())
-//				.setHeader("Subject", constant("Dear Customer, "))
-//				.setHeader("From", constant("SmartHomeManagement"))
-//				.to("file:C:/wmpm/file?fileName=company.csv");
-		
-//		from("log:dead?level=ERROR").to("mock:logger"); //---> DeadLetterChannel-TestLOG Output
-		
-		// aggregate(new FileAggregationStrategy())
-		// from("jpa://at.tu.wmpm16.models.ColdWaterConsumption?consumer.query=select
-		// o from at.tu.wmpm16.models.ColdWaterConsumption o").process(new
-		// PollingConsumerBean()).marshal().csv().to("file:c:/wmpm/file");
 	}
 }
