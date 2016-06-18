@@ -31,3 +31,9 @@ To Access H2 Console in Browser use following URL:
 	No Password
 
 Start MainApp as Java Application
+Mail addresses:
+kraftwerkbetreiber@gmail.com
+wmpm16.10@gmail.com
+
+Dropbox Account:
+wmpm16.10@gmail.com
