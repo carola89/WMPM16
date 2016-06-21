@@ -27,7 +27,7 @@ public class InformingDisordersRoute  extends RouteBuilder {
 		 .setHeader("From", constant("wmpm16.10@gmail.com"))
 	 	 .setBody(constant("Dear Operator, " + "\n" + "we have a disorder. " + "\n" + "Best regards, Smart home"))
 	 	 .multicast()
-		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.kraftwerk}}", "smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.kraftwerk}}")
+		 .to("smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.kraftwerk}}", "smtps://{{mail.smtp.address}}?username={{mail.userName}}&password={{mail.password}}&to={{mail.to.netzwerk}}")
 		 .log("Email done Disorder");
 		
 		
